@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using LibraryManagementApp.Domain.Models;
-using LibraryManagementApp.Domain.Dtos.BookDtos;
+﻿using LibraryManagementApp.Domain.Dtos.BookDtos;
 
 namespace LibraryManagementApp.Domain.Interfaces
 {
