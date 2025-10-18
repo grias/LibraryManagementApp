@@ -1,8 +1,7 @@
 ﻿using LibraryManagementApp.Domain.Models;
 
-namespace LibraryManagementApp.Domain.Interfaces.Repositories
+namespace LibraryManagementApp.Domain.Interfaces.Repositories;
+
+public interface IAuthorsRepository : IRepository<Author>
 {
-    public interface IAuthorsRepository : IRepository<Author>
-    {
-    }
 }

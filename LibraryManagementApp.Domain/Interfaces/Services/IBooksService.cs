@@ -1,17 +1,16 @@
 ﻿using LibraryManagementApp.Domain.Dtos.BookDtos;
 
-namespace LibraryManagementApp.Domain.Interfaces.Services
+namespace LibraryManagementApp.Domain.Interfaces.Services;
+
+public interface IBooksService
 {
-    public interface IBooksService
-    {
-        Task<List<BookDto>> GetAllAsync();
+    Task<List<BookDto>> GetAllAsync();
 
-        Task<BookDto?> GetByIdAsync(int id);
+    Task<BookDto?> GetByIdAsync(int id);
 
-        Task<BookDto> CreateAsync(CreateBookDto bookDto);
+    Task<BookDto> CreateAsync(CreateBookDto bookDto);
 
-        Task<BookDto?> TryUpdateAsync(int id, UpdateBookDto bookDto);
+    Task<BookDto?> TryUpdateAsync(int id, UpdateBookDto bookDto);
 
-        Task<bool> DeleteAsync(int id);
-    }
+    Task<bool> DeleteAsync(int id);
 }

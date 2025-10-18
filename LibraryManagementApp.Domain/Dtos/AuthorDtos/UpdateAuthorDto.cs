@@ -1,9 +1,8 @@
-﻿namespace LibraryManagementApp.Domain.Dtos.AuthorDtos
-{
-    public class UpdateAuthorDto
-    {
-        public string? Name { get; set; }
+﻿namespace LibraryManagementApp.Domain.Dtos.AuthorDtos;
 
-        public DateOnly? DateOfBirth { get; set; }
-    }
+public class UpdateAuthorDto
+{
+    public string? Name { get; set; }
+
+    public DateOnly? DateOfBirth { get; set; }
 }

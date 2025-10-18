@@ -1,13 +1,12 @@
-﻿namespace LibraryManagementApp.Domain.Dtos.BookDtos
+﻿namespace LibraryManagementApp.Domain.Dtos.BookDtos;
+
+public class BookDto
 {
-    public class BookDto
-    {
-        public int Id { get; set; }
+    public int Id { get; set; }
 
-        public string Title { get; set; } = string.Empty;
+    public string Title { get; set; } = string.Empty;
 
-        public int PublishedYear { get; set; }
+    public int PublishedYear { get; set; }
 
-        public int AuthorId { get; set; }
-    }
+    public int AuthorId { get; set; }
 }

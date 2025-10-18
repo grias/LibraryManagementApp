@@ -1,83 +1,81 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using LibraryManagementApp.Domain.Dtos.AuthorDtos;
+﻿using LibraryManagementApp.Domain.Dtos.AuthorDtos;
 using LibraryManagementApp.Domain.Interfaces.Services;
+using Microsoft.AspNetCore.Mvc;
 
-namespace LibraryManagementApp.WebApi.Controllers
+namespace LibraryManagementApp.WebApi.Controllers;
+
+[Route("api/[controller]")]
+[ApiController]
+public class AuthorsController : ControllerBase
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class AuthorsController : ControllerBase
+    private readonly IAuthorsService _authorService;
+
+    public AuthorsController(IAuthorsService authorService)
     {
-        private readonly IAuthorsService _authorService;
+        _authorService = authorService;
+    }
 
-        public AuthorsController(IAuthorsService authorService)
+    [HttpGet]
+    public async Task<IActionResult> GetAll()
+    {
+        var authors = await _authorService.GetAllAsync();
+        return Ok(authors);
+    }
+
+    [HttpGet("id:int")]
+    public async Task<IActionResult> GetById([FromRoute] int id)
+    {
+        var author = await _authorService.GetByIdAsync(id);
+
+        if (author is null)
         {
-            _authorService = authorService;
+            return NotFound();
         }
 
-        [HttpGet]
-        public async Task<IActionResult> GetAll()
+        return Ok(author);
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> Create([FromBody] CreateAuthorDto author)
+    {
+        if (!ModelState.IsValid)
         {
-            var authors = await _authorService.GetAllAsync();
-            return Ok(authors);
+            return BadRequest(ModelState);
         }
 
-        [HttpGet("id:int")]
-        public async Task<IActionResult> GetById([FromRoute] int id)
+        await _authorService.CreateAsync(author);
+
+        return Ok();
+    }
+
+    [HttpPut("id:int")]
+    public async Task<IActionResult> Update([FromRoute] int id, [FromBody] UpdateAuthorDto author)
+    {
+        if (!ModelState.IsValid)
         {
-            var author = await _authorService.GetByIdAsync(id);
-
-            if (author is null)
-            {
-                return NotFound();
-            }
-
-            return Ok(author);
+            return BadRequest(ModelState);
         }
 
-        [HttpPost]
-        public async Task<IActionResult> Create([FromBody] CreateAuthorDto author)
+        var updatedAuthor = await _authorService.TryUpdateAsync(id, author);
+
+        if (updatedAuthor is null)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            await _authorService.CreateAsync(author);
-
-            return Ok();
+            return NotFound();
         }
 
-        [HttpPut("id:int")]
-        public async Task<IActionResult> Update([FromRoute] int id, [FromBody] UpdateAuthorDto author)
+        return Ok(updatedAuthor);
+    }
+
+    [HttpDelete]
+    public async Task<IActionResult> DeleteById([FromRoute] int id)
+    {
+        var found = await _authorService.DeleteAsync(id);
+
+        if (!found)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            var updatedAuthor = await _authorService.TryUpdateAsync(id, author);
-
-            if (updatedAuthor is null)
-            {
-                return NotFound();
-            }
-
-            return Ok(updatedAuthor);
+            return NotFound();
         }
 
-        [HttpDelete]
-        public async Task<IActionResult> DeleteById([FromRoute] int id)
-        {
-            var found = await _authorService.DeleteAsync(id);
-
-            if (!found)
-            {
-                return NotFound();
-            }
-
-            return NoContent();
-        }
+        return NoContent();
     }
 }

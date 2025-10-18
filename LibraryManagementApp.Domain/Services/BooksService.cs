@@ -3,68 +3,67 @@ using LibraryManagementApp.Domain.Interfaces.Repositories;
 using LibraryManagementApp.Domain.Interfaces.Services;
 using LibraryManagementApp.Domain.Mappers;
 
-namespace LibraryManagementApp.Domain.Services
+namespace LibraryManagementApp.Domain.Services;
+
+internal class BooksService : IBooksService
 {
-    internal class BooksService : IBooksService
+    private readonly IBooksRepository _booksRepository;
+
+    public BooksService(IBooksRepository booksRepository)
     {
-        private readonly IBooksRepository _booksRepository;
+        _booksRepository = booksRepository;
+    }
 
-        public BooksService(IBooksRepository booksRepository)
+    public async Task<List<BookDto>> GetAllAsync()
+    {
+        var bookModels = await _booksRepository.GetAllAsync();
+        return bookModels.Select(book => book.ToBookDto()).ToList();
+    }
+
+    public async Task<BookDto?> GetByIdAsync(int id)
+    {
+        var bookModel = await _booksRepository.GetByIdAsync(id);
+        return bookModel.ToBookDto();
+    }
+
+    public async Task<BookDto> CreateAsync(CreateBookDto bookDto)
+    {
+        var createdBookModel = await _booksRepository.CreateAsync(bookDto.ToBookModel());
+        return createdBookModel.ToBookDto();
+    }
+
+    public async Task<BookDto?> TryUpdateAsync(int id, UpdateBookDto bookDto)
+    {
+        var bookModel = await _booksRepository.GetByIdAsync(id);
+
+        if (bookModel is null)
         {
-            _booksRepository = booksRepository;
+            return null;
         }
 
-        public async Task<List<BookDto>> GetAllAsync()
+        if (bookDto.Title is not null)
+            bookModel.Title = bookDto.Title;
+
+        if (bookDto.PublishedYear.HasValue)
+            bookModel.PublishedYear = bookDto.PublishedYear.Value;
+
+        if (bookDto.AuthorId.HasValue)
+            bookModel.AuthorId = bookDto.AuthorId.Value;
+
+        var updatedBookModel = await _booksRepository.UpdateAsync(bookModel);
+        return updatedBookModel.ToBookDto();
+    }
+
+    public async Task<bool> DeleteAsync(int id)
+    {
+        var bookModel = await _booksRepository.GetByIdAsync(id);
+
+        if (bookModel is null)
         {
-            var bookModels = await _booksRepository.GetAllAsync();
-            return bookModels.Select(book => book.ToBookDto()).ToList();
+            return false;
         }
 
-        public async Task<BookDto?> GetByIdAsync(int id)
-        {
-            var bookModel = await _booksRepository.GetByIdAsync(id);
-            return bookModel.ToBookDto();
-        }
-
-        public async Task<BookDto> CreateAsync(CreateBookDto bookDto)
-        {
-            var createdBookModel = await _booksRepository.CreateAsync(bookDto.ToBookModel());
-            return createdBookModel.ToBookDto();
-        }
-
-        public async Task<BookDto?> TryUpdateAsync(int id, UpdateBookDto bookDto)
-        {
-            var bookModel = await _booksRepository.GetByIdAsync(id);
-
-            if (bookModel is null)
-            {
-                return null;
-            }
-
-            if (bookDto.Title is not null)
-                bookModel.Title = bookDto.Title;
-
-            if (bookDto.PublishedYear.HasValue)
-                bookModel.PublishedYear = bookDto.PublishedYear.Value;
-
-            if (bookDto.AuthorId.HasValue)
-                bookModel.AuthorId = bookDto.AuthorId.Value;
-
-            var updatedBookModel = await _booksRepository.UpdateAsync(bookModel);
-            return updatedBookModel.ToBookDto();
-        }
-
-        public async Task<bool> DeleteAsync(int id)
-        {
-            var bookModel = await _booksRepository.GetByIdAsync(id);
-
-            if (bookModel is null)
-            {
-                return false;
-            }
-
-            await _booksRepository.DeleteAsync(id);
-            return true;
-        }
+        await _booksRepository.DeleteAsync(id);
+        return true;
     }
 }

@@ -1,19 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿namespace LibraryManagementApp.Domain.Interfaces.Repositories;
 
-namespace LibraryManagementApp.Domain.Interfaces.Repositories
+public interface IRepository<TEntity> where TEntity : class
 {
-    public interface IRepository<TEntity> where TEntity : class
-    {
-        Task<List<TEntity>> GetAllAsync();
+    Task<List<TEntity>> GetAllAsync();
 
-        Task<TEntity> GetByIdAsync(int id);
+    Task<TEntity> GetByIdAsync(int id);
 
-        Task<TEntity> CreateAsync(TEntity entity);
+    Task<TEntity> CreateAsync(TEntity entity);
 
-        Task<TEntity> UpdateAsync(TEntity entity);
+    Task<TEntity> UpdateAsync(TEntity entity);
 
-        Task<TEntity> DeleteAsync(int id);
-    }
+    Task<TEntity> DeleteAsync(int id);
 }

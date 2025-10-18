@@ -1,11 +1,10 @@
-﻿namespace LibraryManagementApp.Domain.Dtos.AuthorDtos
+﻿namespace LibraryManagementApp.Domain.Dtos.AuthorDtos;
+
+public class AuthorDto
 {
-    public class AuthorDto
-    {
-        public int Id { get; set; }
+    public int Id { get; set; }
 
-        public string Name { get; set; } = string.Empty;
+    public string Name { get; set; } = string.Empty;
 
-        public DateOnly DateOfBirth { get; set; }
-    }
+    public DateOnly DateOfBirth { get; set; }
 }

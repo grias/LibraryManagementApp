@@ -1,16 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Text;
+﻿namespace LibraryManagementApp.Domain.Dtos.BookDtos;
 
-namespace LibraryManagementApp.Domain.Dtos.BookDtos
+public class UpdateBookDto
 {
-    public class UpdateBookDto
-    {
-        public string? Title { get; set; }
+    public string? Title { get; set; }
 
-        public int? PublishedYear { get; set; }
+    public int? PublishedYear { get; set; }
 
-        public int? AuthorId { get; set; }
-    }
+    public int? AuthorId { get; set; }
 }

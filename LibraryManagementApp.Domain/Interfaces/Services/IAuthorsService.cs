@@ -1,17 +1,16 @@
 ﻿using LibraryManagementApp.Domain.Dtos.AuthorDtos;
 
-namespace LibraryManagementApp.Domain.Interfaces.Services
+namespace LibraryManagementApp.Domain.Interfaces.Services;
+
+public interface IAuthorsService
 {
-    public interface IAuthorsService
-    {
-        Task<List<AuthorDto>> GetAllAsync();
+    Task<List<AuthorDto>> GetAllAsync();
 
-        Task<AuthorDto?> GetByIdAsync(int id);
+    Task<AuthorDto?> GetByIdAsync(int id);
 
-        Task<AuthorDto> CreateAsync(CreateAuthorDto authorDto);
+    Task<AuthorDto> CreateAsync(CreateAuthorDto authorDto);
 
-        Task<AuthorDto?> TryUpdateAsync(int id, UpdateAuthorDto authorDto);
+    Task<AuthorDto?> TryUpdateAsync(int id, UpdateAuthorDto authorDto);
 
-        Task<bool> DeleteAsync(int id);
-    }
+    Task<bool> DeleteAsync(int id);
 }
