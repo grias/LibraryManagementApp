@@ -1,8 +1,5 @@
 ﻿using LibraryManagementApp.Domain.Interfaces.Repositories;
 using LibraryManagementApp.Domain.Models;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace LibraryManagementApp.DataAccess.Repositories;
 
@@ -39,11 +36,11 @@ public class InMemoryBooksRepository : IBooksRepository
         return _booksSet.FirstOrDefault(book => book.Id == id);
     }
 
-    public async Task<Book> CreateAsync(Book entity)
+    public async Task<Book> CreateAsync(Book createdBook)
     {
-        entity.Id = NewId;
-        _booksSet.Add(entity);
-        return entity;
+        createdBook.Id = NewId;
+        _booksSet.Add(createdBook);
+        return createdBook;
     }
     public async Task<Book?> UpdateAsync(Book updatedBook)
     {
@@ -57,7 +54,6 @@ public class InMemoryBooksRepository : IBooksRepository
     {
         var bookToRemove = await GetByIdAsync(id);
         _booksSet.Remove(bookToRemove);
-
         return bookToRemove;
     }
 }
