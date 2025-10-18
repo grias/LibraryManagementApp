@@ -2,8 +2,8 @@
 {
     public class UpdateAuthorDto
     {
-        public string Name { get; set; } = string.Empty;
+        public string? Name { get; set; }
 
-        public DateOnly DateOfBirth { get; set; }
+        public DateOnly? DateOfBirth { get; set; }
     }
 }
