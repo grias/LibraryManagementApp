@@ -2,7 +2,7 @@
 
 namespace LibraryManagementApp.Domain.Interfaces.Repositories
 {
-    public interface IAuthorRepository : IRepository<Author>
+    public interface IAuthorsRepository : IRepository<Author>
     {
     }
 }
