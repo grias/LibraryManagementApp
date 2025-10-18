@@ -2,7 +2,7 @@
 
 namespace LibraryManagementApp.Domain.Interfaces.Services
 {
-    public interface IAuthorService
+    public interface IAuthorsService
     {
         Task<List<AuthorDto>> GetAllAsync();
 

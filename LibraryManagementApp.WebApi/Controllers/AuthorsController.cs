@@ -9,9 +9,9 @@ namespace LibraryManagementApp.WebApi.Controllers
     [ApiController]
     public class AuthorsController : ControllerBase
     {
-        private readonly IAuthorService _authorService;
+        private readonly IAuthorsService _authorService;
 
-        public AuthorsController(IAuthorService authorService)
+        public AuthorsController(IAuthorsService authorService)
         {
             _authorService = authorService;
         }
