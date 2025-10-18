@@ -57,9 +57,9 @@ namespace LibraryManagementApp.WebApi.Controllers
                 return BadRequest(ModelState);
             }
 
-            var (updatedAuthor, found) = await _authorService.TryUpdateAsync(id, author);
+            var updatedAuthor = await _authorService.TryUpdateAsync(id, author);
 
-            if (!found)
+            if (updatedAuthor is null)
             {
                 return NotFound();
             }
