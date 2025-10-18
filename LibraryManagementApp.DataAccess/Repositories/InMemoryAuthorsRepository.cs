@@ -1,0 +1,58 @@
+﻿using LibraryManagementApp.Domain.Interfaces.Repositories;
+using LibraryManagementApp.Domain.Models;
+
+namespace LibraryManagementApp.DataAccess.Repositories;
+
+internal class InMemoryAuthorsRepository : IAuthorsRepository
+{
+    private readonly List<Author> _authorsSet;
+    
+    private int NewId
+    {
+        get
+        {
+            return _authorsSet.OrderByDescending(author => author.Id).FirstOrDefault().Id + 1;
+        }
+    }
+
+    public InMemoryAuthorsRepository()
+    {
+        _authorsSet = new List<Author>()
+        {
+            new Author() {Id = 1, Name = "Unknown author"},
+            new Author() {Id = 2, Name = "J. R. R. Tolkien", DateOfBirth = new DateOnly(1892, 1, 3)},
+            new Author() {Id = 3, Name = "J. K. Rowling", DateOfBirth = new DateOnly(1965, 7, 31)},
+        };
+    }
+
+    public async Task<List<Author>> GetAllAsync()
+    {
+        return _authorsSet;
+    }
+
+    public async Task<Author?> GetByIdAsync(int id)
+    {
+        return _authorsSet.Find(author => author.Id == id);
+    }
+
+    public async Task<Author> CreateAsync(Author createdAuthor)
+    {
+        createdAuthor.Id = NewId;
+        _authorsSet.Add(createdAuthor);
+        return createdAuthor;
+    }
+    public async Task<Author?> UpdateAsync(Author updatedAuthor)
+    {
+        var oldAuthor = await GetByIdAsync(updatedAuthor.Id);
+        _authorsSet.Remove(oldAuthor);
+        _authorsSet.Add(updatedAuthor);
+        return updatedAuthor;
+    }
+
+    public async Task<Author> DeleteAsync(int id)
+    {
+        var authorToRemove = await GetByIdAsync(id);
+        _authorsSet.Remove(authorToRemove);
+        return authorToRemove;
+    }
+}
