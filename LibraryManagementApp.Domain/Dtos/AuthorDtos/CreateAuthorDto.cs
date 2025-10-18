@@ -1,7 +1,10 @@
-﻿namespace LibraryManagementApp.Domain.Dtos.AuthorDtos;
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace LibraryManagementApp.Domain.Dtos.AuthorDtos;
 
 public class CreateAuthorDto
 {
+    [Required]
     public string Name { get; set; } = string.Empty;
 
     public DateOnly DateOfBirth { get; set; }
