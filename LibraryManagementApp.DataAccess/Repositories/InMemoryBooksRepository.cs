@@ -11,6 +11,10 @@ public class InMemoryBooksRepository : IBooksRepository
     {
         get
         {
+            if (_booksSet.Count == 0)
+            {
+                return 1;
+            }
             return _booksSet.OrderByDescending(book => book.Id).FirstOrDefault().Id + 1;
         }
     }

@@ -11,6 +11,10 @@ public class InMemoryAuthorsRepository : IAuthorsRepository
     {
         get
         {
+            if (_authorsSet.Count == 0)
+            {
+                return 1;
+            }
             return _authorsSet.OrderByDescending(author => author.Id).FirstOrDefault().Id + 1;
         }
     }
