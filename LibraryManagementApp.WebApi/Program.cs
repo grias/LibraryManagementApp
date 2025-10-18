@@ -20,6 +20,9 @@ public class Program
         builder.Services.AddSingleton<IBooksRepository, InMemoryBooksRepository>();
         builder.Services.AddTransient<IBooksService, BooksService>();
 
+        builder.Services.AddSingleton<IAuthorsRepository, InMemoryAuthorsRepository>();
+        builder.Services.AddTransient<IAuthorsService, AuthorsService>();
+
         var app = builder.Build();
 
         // Configure the HTTP request pipeline.
