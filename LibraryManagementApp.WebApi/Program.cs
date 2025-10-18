@@ -1,3 +1,8 @@
+using LibraryManagementApp.Domain.Interfaces.Services;
+using LibraryManagementApp.Domain.Interfaces.Repositories;
+using LibraryManagementApp.Domain.Services;
+using LibraryManagementApp.DataAccess.Repositories;
+
 namespace LibraryManagementApp.WebApi;
 
 public class Program
@@ -11,6 +16,9 @@ public class Program
         builder.Services.AddControllers();
         // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
         builder.Services.AddOpenApi();
+
+        builder.Services.AddSingleton<IBooksRepository, InMemoryBooksRepository>();
+        builder.Services.AddTransient<IBooksService, BooksService>();
 
         var app = builder.Build();
 
