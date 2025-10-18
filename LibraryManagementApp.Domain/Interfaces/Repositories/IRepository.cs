@@ -8,7 +8,7 @@ namespace LibraryManagementApp.Domain.Interfaces.Repositories
     {
         Task<List<TEntity>> GetAllAsync();
 
-        Task<TEntity> GetById(int id);
+        Task<TEntity> GetByIdAsync(int id);
 
         Task<TEntity> CreateAsync(TEntity entity);
 
