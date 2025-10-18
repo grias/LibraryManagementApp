@@ -10,7 +10,7 @@ namespace LibraryManagementApp.Domain.Interfaces.Services
 
         Task<BookDto> CreateAsync(CreateBookDto bookDto);
 
-        Task<BookDto> TryUpdateAsync(int id, UpdateBookDto bookDto);
+        Task<BookDto?> TryUpdateAsync(int id, UpdateBookDto bookDto);
 
         Task<bool> DeleteAsync(int id);
     }

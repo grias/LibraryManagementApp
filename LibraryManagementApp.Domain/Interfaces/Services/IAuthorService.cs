@@ -10,7 +10,7 @@ namespace LibraryManagementApp.Domain.Interfaces.Services
 
         Task<AuthorDto> CreateAsync(CreateAuthorDto authorDto);
 
-        Task<AuthorDto> TryUpdateAsync(int id, UpdateAuthorDto authorDto);
+        Task<AuthorDto?> TryUpdateAsync(int id, UpdateAuthorDto authorDto);
 
         Task<bool> DeleteAsync(int id);
     }
