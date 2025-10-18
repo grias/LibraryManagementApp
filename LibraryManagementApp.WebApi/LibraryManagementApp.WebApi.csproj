@@ -12,6 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\LibraryManagementApp.DataAccess\LibraryManagementApp.DataAccess.csproj" />
     <ProjectReference Include="..\LibraryManagementApp.Domain\LibraryManagementApp.Domain.csproj" />
   </ItemGroup>
 
