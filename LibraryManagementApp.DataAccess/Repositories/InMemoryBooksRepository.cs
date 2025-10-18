@@ -10,8 +10,13 @@ public class InMemoryBooksRepository : IBooksRepository
 {
     private readonly List<Book> _booksSet;
 
-    private int _newId;
-    private int NewId { get => _newId++; init; }
+    private int NewId
+    {
+        get
+        {
+            return _booksSet.OrderByDescending(book => book.Id).FirstOrDefault().Id + 1;
+        }
+    }
 
     public InMemoryBooksRepository()
     {
@@ -22,8 +27,6 @@ public class InMemoryBooksRepository : IBooksRepository
             new Book() {Id = 3, Title = "Harry Potter and the Philosopher's Stone", AuthorId = 3 , PublishedYear = 1997},
             new Book() {Id = 4, Title = "Harry Potter and the Chamber of Secrets", AuthorId = 3 , PublishedYear = 1898},
         };
-
-        NewId = _booksSet.Count + 1;
     }
 
     public async Task<List<Book>> GetAllAsync()
@@ -38,6 +41,7 @@ public class InMemoryBooksRepository : IBooksRepository
 
     public async Task<Book> CreateAsync(Book entity)
     {
+        entity.Id = NewId;
         _booksSet.Add(entity);
         return entity;
     }
