@@ -8,9 +8,9 @@ namespace LibraryManagementApp.Domain.Interfaces.Services
 
         Task<BookDto?> GetByIdAsync(int id);
 
-        Task<BookDto> CreateAsync(CreateBookDto book);
+        Task<BookDto> CreateAsync(CreateBookDto bookDto);
 
-        Task<(BookDto updatedBook, bool exists)> TryUpdateAsync(int id, UpdateBookDto book);
+        Task<BookDto> TryUpdateAsync(int id, UpdateBookDto bookDto);
 
         Task<bool> DeleteAsync(int id);
     }

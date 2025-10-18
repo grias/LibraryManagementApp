@@ -8,9 +8,9 @@ namespace LibraryManagementApp.Domain.Interfaces.Services
 
         Task<AuthorDto?> GetByIdAsync(int id);
 
-        Task<AuthorDto> CreateAsync(CreateAuthorDto author);
+        Task<AuthorDto> CreateAsync(CreateAuthorDto authorDto);
 
-        Task<(AuthorDto updatedAuthor, bool exists)> TryUpdateAsync(int id, UpdateAuthorDto author);
+        Task<AuthorDto> TryUpdateAsync(int id, UpdateAuthorDto authorDto);
 
         Task<bool> DeleteAsync(int id);
     }
