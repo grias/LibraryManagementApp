@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using LibraryManagementApp.Domain.Interfaces;
 using LibraryManagementApp.Domain.Dtos.BookDtos;
+using LibraryManagementApp.Domain.Interfaces.Services;
 
 namespace LibraryManagementApp.WebApi.Controllers
 {

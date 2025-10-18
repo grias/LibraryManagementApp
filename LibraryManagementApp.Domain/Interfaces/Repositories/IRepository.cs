@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace LibraryManagementApp.Domain.Interfaces
+namespace LibraryManagementApp.Domain.Interfaces.Repositories
 {
     public interface IRepository<TEntity> where TEntity : class
     {

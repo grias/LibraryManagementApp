@@ -1,6 +1,6 @@
 ﻿using LibraryManagementApp.Domain.Dtos.BookDtos;
 
-namespace LibraryManagementApp.Domain.Interfaces
+namespace LibraryManagementApp.Domain.Interfaces.Services
 {
     public interface IBooksService
     {
