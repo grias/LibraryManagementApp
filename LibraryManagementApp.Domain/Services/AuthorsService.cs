@@ -6,7 +6,7 @@ using LibraryManagementApp.Domain.Mappers;
 
 namespace LibraryManagementApp.Domain.Services;
 
-internal class AuthorsService : IAuthorsService
+public class AuthorsService : IAuthorsService
 {
     private readonly IAuthorsRepository _authorsRepository;
 

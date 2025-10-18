@@ -5,7 +5,7 @@ using LibraryManagementApp.Domain.Mappers;
 
 namespace LibraryManagementApp.Domain.Services;
 
-internal class BooksService : IBooksService
+public class BooksService : IBooksService
 {
     private readonly IBooksRepository _booksRepository;
 
