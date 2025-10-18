@@ -3,7 +3,7 @@ using LibraryManagementApp.Domain.Models;
 
 namespace LibraryManagementApp.DataAccess.Repositories;
 
-internal class InMemoryAuthorsRepository : IAuthorsRepository
+public class InMemoryAuthorsRepository : IAuthorsRepository
 {
     private readonly List<Author> _authorsSet;
     
