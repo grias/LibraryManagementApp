@@ -28,15 +28,5 @@ namespace LibraryManagementApp.Domain.Mappers
                 AuthorId = bookDto.AuthorId
             };
         }
-
-        public static Book ToBookModel(this UpdateBookDto bookDto)
-        {
-            return new Book()
-            {
-                Title = bookDto.Title,
-                PublishedYear = bookDto.PublishedYear,
-                AuthorId = bookDto.AuthorId
-            };
-        }
     }
 }
