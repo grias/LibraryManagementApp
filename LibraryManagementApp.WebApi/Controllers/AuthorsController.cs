@@ -22,7 +22,7 @@ public class AuthorsController : ControllerBase
         return Ok(authors);
     }
 
-    [HttpGet("id:int")]
+    [HttpGet("{id:int}")]
     public async Task<IActionResult> GetById([FromRoute] int id)
     {
         var author = await _authorService.GetByIdAsync(id);
@@ -48,7 +48,7 @@ public class AuthorsController : ControllerBase
         return Ok();
     }
 
-    [HttpPut("id:int")]
+    [HttpPut("{id:int}")]
     public async Task<IActionResult> Update([FromRoute] int id, [FromBody] UpdateAuthorDto author)
     {
         if (!ModelState.IsValid)

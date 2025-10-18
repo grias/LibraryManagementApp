@@ -22,7 +22,7 @@ public class BooksController : ControllerBase
         return Ok(books);
     }
 
-    [HttpGet("id:int")]
+    [HttpGet("{id:int}")]
     public async Task<IActionResult> GetById([FromRoute] int id)
     {
         var book = await _booksService.GetByIdAsync(id);
@@ -48,7 +48,7 @@ public class BooksController : ControllerBase
         return Ok();
     }
 
-    [HttpPut("id:int")]
+    [HttpPut("{id:int}")]
     public async Task<IActionResult> Update([FromRoute] int id, [FromBody] UpdateBookDto book)
     {
         if (!ModelState.IsValid)
