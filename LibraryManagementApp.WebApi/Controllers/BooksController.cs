@@ -66,7 +66,7 @@ public class BooksController : ControllerBase
         return Ok(updatedBook);
     }
 
-    [HttpDelete]
+    [HttpDelete("{id:int}")]
     public async Task<IActionResult> DeleteById([FromRoute] int id)
     {
         var found = await _booksService.DeleteAsync(id);
