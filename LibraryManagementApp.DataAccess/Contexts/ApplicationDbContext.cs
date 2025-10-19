@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using LibraryManagementApp.Domain.Models;
+﻿using LibraryManagementApp.Domain.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace LibraryManagementApp.DataAccess.Contexts;
@@ -9,7 +6,7 @@ namespace LibraryManagementApp.DataAccess.Contexts;
 public class ApplicationDbContext : DbContext
 {
     public DbSet<Book> Books { get; set; }
-    public DbSet<Author> Author { get; set; }
+    public DbSet<Author> Authors { get; set; }
 
     public ApplicationDbContext(DbContextOptions options) : base(options)
     {
