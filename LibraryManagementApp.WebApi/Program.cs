@@ -19,15 +19,9 @@ public class Program
         // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
         builder.Services.AddOpenApi();
 
-        builder.Services.AddSingleton<IBooksRepository, InMemoryBooksRepository>();
-        builder.Services.AddTransient<IBooksService, BooksService>();
-
-        builder.Services.AddSingleton<IAuthorsRepository, InMemoryAuthorsRepository>();
-        builder.Services.AddTransient<IAuthorsService, AuthorsService>();
-
-        builder.Services.AddDbContext<ApplicationDbContext>(options => {
-            options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
-        });
+        RegisterRepositories(builder);
+        RegisterServices(builder);
+        RegisterDbContext(builder);
 
         var app = builder.Build();
 
@@ -46,9 +40,28 @@ public class Program
 
         app.UseAuthorization();
 
-
         app.MapControllers();
 
         app.Run();
+    }
+
+    private static void RegisterRepositories(WebApplicationBuilder builder)
+    {
+        builder.Services.AddSingleton<IBooksRepository, InMemoryBooksRepository>();
+        builder.Services.AddSingleton<IAuthorsRepository, InMemoryAuthorsRepository>();
+    }
+
+    private static void RegisterServices(WebApplicationBuilder builder)
+    {
+        builder.Services.AddTransient<IBooksService, BooksService>();
+        builder.Services.AddTransient<IAuthorsService, AuthorsService>();
+    }
+
+    private static void RegisterDbContext(WebApplicationBuilder builder)
+    {
+        builder.Services.AddDbContext<ApplicationDbContext>(options =>
+        {
+            options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+        });
     }
 }
