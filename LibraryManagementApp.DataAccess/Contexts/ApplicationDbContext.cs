@@ -1,4 +1,4 @@
-﻿using LibraryManagementApp.Domain.Models;
+﻿using LibraryManagementApp.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace LibraryManagementApp.DataAccess.Contexts;

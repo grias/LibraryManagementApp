@@ -1,4 +1,4 @@
-﻿using LibraryManagementApp.Domain.Models;
+﻿using LibraryManagementApp.Domain.Entities;
 
 namespace LibraryManagementApp.Domain.Interfaces.Repositories;
 

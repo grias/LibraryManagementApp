@@ -1,6 +1,6 @@
 ﻿using LibraryManagementApp.DataAccess.Contexts;
 using LibraryManagementApp.Domain.Interfaces.Repositories;
-using LibraryManagementApp.Domain.Models;
+using LibraryManagementApp.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace LibraryManagementApp.DataAccess.Repositories;

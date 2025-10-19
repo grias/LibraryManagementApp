@@ -1,5 +1,5 @@
 ﻿using LibraryManagementApp.Domain.Interfaces.Repositories;
-using LibraryManagementApp.Domain.Models;
+using LibraryManagementApp.Domain.Entities;
 
 namespace LibraryManagementApp.DataAccess.Repositories;
 

@@ -1,6 +1,6 @@
 ﻿using LibraryManagementApp.Domain.Dtos.AuthorDtos;
 using LibraryManagementApp.Domain.Dtos.BookDtos;
-using LibraryManagementApp.Domain.Models;
+using LibraryManagementApp.Domain.Entities;
 
 namespace LibraryManagementApp.Domain.Mappers;
 
