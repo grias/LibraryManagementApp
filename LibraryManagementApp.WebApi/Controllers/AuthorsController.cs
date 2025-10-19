@@ -43,9 +43,9 @@ public class AuthorsController : ControllerBase
             return BadRequest(ModelState);
         }
 
-        await _authorService.CreateAsync(author);
+        var createdAuthor = await _authorService.CreateAsync(author);
 
-        return Ok();
+        return Ok(createdAuthor);
     }
 
     [HttpPut("{id:int}")]

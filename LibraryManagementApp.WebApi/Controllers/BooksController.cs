@@ -43,9 +43,9 @@ public class BooksController : ControllerBase
             return BadRequest(ModelState);
         }
 
-        await _booksService.CreateAsync(book);
+        var createdBook = await _booksService.CreateAsync(book);
 
-        return Ok();
+        return Ok(createdBook);
     }
 
     [HttpPut("{id:int}")]
