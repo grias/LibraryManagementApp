@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace LibraryManagementApp.Domain.Dtos.AuthorDtos;
+namespace LibraryManagementApp.Domain.Dtos.Author;
 
 public class CreateAuthorDto
 {

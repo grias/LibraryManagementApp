@@ -1,4 +1,4 @@
-﻿using LibraryManagementApp.Domain.Dtos.AuthorDtos;
+﻿using LibraryManagementApp.Domain.Dtos.Author;
 
 namespace LibraryManagementApp.Domain.Interfaces.Services;
 

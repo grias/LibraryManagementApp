@@ -1,4 +1,4 @@
-﻿using LibraryManagementApp.Domain.Dtos.BookDtos;
+﻿using LibraryManagementApp.Domain.Dtos.Book;
 using LibraryManagementApp.Domain.Entities;
 
 namespace LibraryManagementApp.Domain.Mappers;

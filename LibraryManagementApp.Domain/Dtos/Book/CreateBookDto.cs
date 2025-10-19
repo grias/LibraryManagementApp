@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace LibraryManagementApp.Domain.Dtos.BookDtos;
+namespace LibraryManagementApp.Domain.Dtos.Book;
 
 public class CreateBookDto
 {

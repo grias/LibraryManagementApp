@@ -1,4 +1,4 @@
-﻿using LibraryManagementApp.Domain.Dtos.AuthorDtos;
+﻿using LibraryManagementApp.Domain.Dtos.Author;
 using LibraryManagementApp.Domain.Interfaces.Services;
 using Microsoft.AspNetCore.Mvc;
 

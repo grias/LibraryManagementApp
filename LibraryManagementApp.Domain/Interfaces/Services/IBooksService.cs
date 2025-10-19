@@ -1,4 +1,4 @@
-﻿using LibraryManagementApp.Domain.Dtos.BookDtos;
+﻿using LibraryManagementApp.Domain.Dtos.Book;
 
 namespace LibraryManagementApp.Domain.Interfaces.Services;
 
