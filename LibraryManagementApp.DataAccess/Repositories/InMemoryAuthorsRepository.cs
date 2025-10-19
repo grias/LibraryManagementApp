@@ -48,14 +48,23 @@ public class InMemoryAuthorsRepository : IAuthorsRepository
     public async Task<Author?> UpdateAsync(Author updatedAuthor)
     {
         var oldAuthor = await GetByIdAsync(updatedAuthor.Id);
+        if (oldAuthor is null)
+        {
+            return null;
+        }
         _authorsSet.Remove(oldAuthor);
         _authorsSet.Add(updatedAuthor);
         return updatedAuthor;
     }
 
-    public async Task<Author> DeleteAsync(int id)
+    public async Task<Author?> DeleteAsync(int id)
     {
         var authorToRemove = await GetByIdAsync(id);
+        if (authorToRemove is null)
+        {
+            return null;
+        }
+
         _authorsSet.Remove(authorToRemove);
         return authorToRemove;
     }
