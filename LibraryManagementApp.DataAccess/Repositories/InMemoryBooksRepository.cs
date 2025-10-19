@@ -49,14 +49,23 @@ public class InMemoryBooksRepository : IBooksRepository
     public async Task<Book?> UpdateAsync(Book updatedBook)
     {
         var oldBook = await GetByIdAsync(updatedBook.Id);
+        if (oldBook is null)
+        {
+            return null;
+        }
+
         _booksSet.Remove(oldBook);
         _booksSet.Add(updatedBook);
         return updatedBook;   
     }
 
-    public async Task<Book> DeleteAsync(int id)
+    public async Task<Book?> DeleteAsync(int id)
     {
         var bookToRemove = await GetByIdAsync(id);
+        if (bookToRemove is null)
+        {
+            return null;
+        }
         _booksSet.Remove(bookToRemove);
         return bookToRemove;
     }
