@@ -24,6 +24,11 @@ public class AuthorsService : IAuthorsService
     public async Task<AuthorDto?> GetByIdAsync(int id)
     {
         var authorModel = await _authorsRepository.GetByIdAsync(id);
+        if (authorModel is null)
+        {
+            return null;
+        }
+
         return authorModel.ToAuthorDto();
     }
 

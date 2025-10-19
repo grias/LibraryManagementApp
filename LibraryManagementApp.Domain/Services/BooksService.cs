@@ -23,6 +23,11 @@ public class BooksService : IBooksService
     public async Task<BookDto?> GetByIdAsync(int id)
     {
         var bookModel = await _booksRepository.GetByIdAsync(id);
+        if (bookModel is null)
+        {
+            return null;
+        }
+
         return bookModel.ToBookDto();
     }
 
