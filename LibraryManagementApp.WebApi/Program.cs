@@ -2,6 +2,8 @@ using LibraryManagementApp.Domain.Interfaces.Services;
 using LibraryManagementApp.Domain.Interfaces.Repositories;
 using LibraryManagementApp.Domain.Services;
 using LibraryManagementApp.DataAccess.Repositories;
+using LibraryManagementApp.DataAccess.Contexts;
+using Microsoft.EntityFrameworkCore;
 
 namespace LibraryManagementApp.WebApi;
 
@@ -22,6 +24,10 @@ public class Program
 
         builder.Services.AddSingleton<IAuthorsRepository, InMemoryAuthorsRepository>();
         builder.Services.AddTransient<IAuthorsService, AuthorsService>();
+
+        builder.Services.AddDbContext<ApplicationDbContext>(options => {
+            options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+        });
 
         var app = builder.Build();
 
