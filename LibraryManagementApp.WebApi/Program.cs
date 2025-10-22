@@ -1,9 +1,12 @@
-using LibraryManagementApp.Domain.Interfaces.Services;
-using LibraryManagementApp.Domain.Interfaces.Repositories;
-using LibraryManagementApp.Domain.Services;
-using LibraryManagementApp.DataAccess.Repositories;
 using LibraryManagementApp.DataAccess.Contexts;
+using LibraryManagementApp.DataAccess.Repositories;
+using LibraryManagementApp.Domain.Interfaces.Repositories;
+using LibraryManagementApp.Domain.Interfaces.Services;
+using LibraryManagementApp.Domain.Services;
+using LibraryManagementApp.WebApi.ExceptionHandlers;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Diagnostics;
 
 namespace LibraryManagementApp.WebApi;
 
@@ -19,11 +22,16 @@ public class Program
         // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
         builder.Services.AddOpenApi();
 
+        builder.Services.AddExceptionHandler<GeneralExceptionHandler>();
+        builder.Services.AddProblemDetails();
+
         RegisterRepositories(builder);
         RegisterServices(builder);
         RegisterDbContext(builder);
 
         var app = builder.Build();
+
+        app.UseExceptionHandler();
 
         // Configure the HTTP request pipeline.
         if (app.Environment.IsDevelopment())
