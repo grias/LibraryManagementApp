@@ -6,5 +6,5 @@ public class AuthorResponseDto
 
     public string Name { get; set; } = string.Empty;
 
-    public DateOnly DateOfBirth { get; set; }
+    public DateOnly? DateOfBirth { get; set; }
 }
