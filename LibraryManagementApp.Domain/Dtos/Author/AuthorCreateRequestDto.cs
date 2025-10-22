@@ -7,5 +7,5 @@ public class AuthorCreateRequestDto
     [Required]
     public string Name { get; set; } = string.Empty;
 
-    public DateOnly DateOfBirth { get; set; }
+    public DateOnly? DateOfBirth { get; set; }
 }

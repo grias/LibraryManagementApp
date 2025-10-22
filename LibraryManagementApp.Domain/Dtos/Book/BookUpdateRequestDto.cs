@@ -5,7 +5,7 @@ namespace LibraryManagementApp.Domain.Dtos.Book;
 public class BookUpdateRequestDto
 {
     [Required]
-    public string? Title { get; set; }
+    public string Title { get; set; } = string.Empty;
 
     public int? PublishedYear { get; set; }
 
