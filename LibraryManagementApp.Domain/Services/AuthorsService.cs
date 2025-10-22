@@ -45,8 +45,6 @@ public class AuthorsService : IAuthorsService
             return null;
         }
 
-        
-
         var updatedAuthorModel = await _authorsRepository.UpdateAsync(authorModel);
         return updatedAuthorModel.ToAuthorDto();
     }
