@@ -4,7 +4,7 @@ using LibraryManagementApp.Domain.Entities;
 
 namespace LibraryManagementApp.Domain.Mappers;
 
-public static class AuthorsMappers
+public static class AuthorsMapper
 {
     public static AuthorDto ToAuthorDto(this Author authorModel)
     {

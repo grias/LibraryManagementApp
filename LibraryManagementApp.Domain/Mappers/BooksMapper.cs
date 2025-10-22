@@ -3,7 +3,7 @@ using LibraryManagementApp.Domain.Entities;
 
 namespace LibraryManagementApp.Domain.Mappers;
 
-public static class BooksMappers
+public static class BooksMapper
 {
     public static BookDto ToBookDto(this Book bookModel)
     {
