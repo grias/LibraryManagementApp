@@ -24,4 +24,19 @@ public static class AuthorsMapper
             DateOfBirth = authorDto.DateOfBirth
         };
     }
+
+    public static Author ToAuthorModel(this AuthorUpdateRequestDto authorDto, int id)
+    {
+        return new Author()
+        {
+            Id = id,
+            Name = authorDto.Name,
+            DateOfBirth = authorDto.DateOfBirth
+        };
+    }
+
+    public static List<AuthorResponseDto> ToListOfAuthorResponseDtos(this List<Author> authors)
+    {
+        return authors.Select(author => author.ToAuthorDto()).ToList();
+    }
 }

@@ -25,4 +25,20 @@ public static class BooksMapper
             AuthorId = bookDto.AuthorId
         };
     }
+
+    public static Book ToBookModel(this BookUpdateRequestDto bookDto, int id)
+    {
+        return new Book()
+        {
+            Id = id,
+            Title = bookDto.Title,
+            PublishedYear = bookDto.PublishedYear,
+            AuthorId = bookDto.AuthorId
+        };
+    }
+
+    public static List<BookResponseDto> ToListOfResponseDtos(this List<Book> books)
+    {
+        return books.Select(book => book.ToBookDto()).ToList();
+    }
 }

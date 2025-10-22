@@ -17,7 +17,7 @@ public class AuthorsService : IAuthorsService
     public async Task<List<AuthorResponseDto>> GetAllAsync()
     {
         var authorModels = await _authorsRepository.GetAllAsync();
-        return authorModels.Select(author => author.ToAuthorDto()).ToList();
+        return authorModels.ToListOfAuthorResponseDtos();
     }
 
     public async Task<AuthorResponseDto?> GetByIdAsync(int id)
@@ -45,11 +45,7 @@ public class AuthorsService : IAuthorsService
             return null;
         }
 
-        if (authorDto.Name is not null)
-            authorModel.Name = authorDto.Name;
-
-        if (authorDto.DateOfBirth.HasValue)
-            authorModel.DateOfBirth = authorDto.DateOfBirth.Value;
+        
 
         var updatedAuthorModel = await _authorsRepository.UpdateAsync(authorModel);
         return updatedAuthorModel.ToAuthorDto();

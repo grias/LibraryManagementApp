@@ -17,7 +17,7 @@ public class BooksService : IBooksService
     public async Task<List<BookResponseDto>> GetAllAsync()
     {
         var bookModels = await _booksRepository.GetAllAsync();
-        return bookModels.Select(book => book.ToBookDto()).ToList();
+        return bookModels.ToListOfResponseDtos();
     }
 
     public async Task<BookResponseDto?> GetByIdAsync(int id)
@@ -46,14 +46,7 @@ public class BooksService : IBooksService
             return null;
         }
 
-        if (bookDto.Title is not null)
-            bookModel.Title = bookDto.Title;
-
-        if (bookDto.PublishedYear.HasValue)
-            bookModel.PublishedYear = bookDto.PublishedYear.Value;
-
-        if (bookDto.AuthorId.HasValue)
-            bookModel.AuthorId = bookDto.AuthorId.Value;
+        bookDto.ToBookModel(id);
 
         var updatedBookModel = await _booksRepository.UpdateAsync(bookModel);
         return updatedBookModel.ToBookDto();
