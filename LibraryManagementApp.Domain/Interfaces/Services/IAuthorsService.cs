@@ -4,13 +4,13 @@ namespace LibraryManagementApp.Domain.Interfaces.Services;
 
 public interface IAuthorsService
 {
-    Task<List<AuthorDto>> GetAllAsync();
+    Task<List<AuthorResponseDto>> GetAllAsync();
 
-    Task<AuthorDto?> GetByIdAsync(int id);
+    Task<AuthorResponseDto?> GetByIdAsync(int id);
 
-    Task<AuthorDto> CreateAsync(CreateAuthorDto authorDto);
+    Task<AuthorResponseDto> CreateAsync(AuthorCreateRequestDto authorDto);
 
-    Task<AuthorDto?> TryUpdateAsync(int id, UpdateAuthorDto authorDto);
+    Task<AuthorResponseDto?> TryUpdateAsync(int id, AuthorUpdateRequestDto authorDto);
 
     Task<bool> DeleteAsync(int id);
 }

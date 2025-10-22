@@ -1,6 +1,6 @@
 ﻿namespace LibraryManagementApp.Domain.Dtos.Author;
 
-public class UpdateAuthorDto
+public class AuthorUpdateRequestDto
 {
     public string? Name { get; set; }
 

@@ -36,7 +36,7 @@ public class BooksController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<IActionResult> Create([FromBody] CreateBookDto book)
+    public async Task<IActionResult> Create([FromBody] BookCreateRequestDto book)
     {
         if (!ModelState.IsValid)
         {
@@ -49,7 +49,7 @@ public class BooksController : ControllerBase
     }
 
     [HttpPut("{id:int}")]
-    public async Task<IActionResult> Update([FromRoute] int id, [FromBody] UpdateBookDto book)
+    public async Task<IActionResult> Update([FromRoute] int id, [FromBody] BookUpdateRequestDto book)
     {
         if (!ModelState.IsValid)
         {

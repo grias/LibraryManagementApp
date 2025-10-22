@@ -1,6 +1,6 @@
 ﻿namespace LibraryManagementApp.Domain.Dtos.Author;
 
-public class AuthorDto
+public class AuthorResponseDto
 {
     public int Id { get; set; }
 

@@ -14,13 +14,13 @@ public class AuthorsService : IAuthorsService
         _authorsRepository = authorsRepository;
     }
 
-    public async Task<List<AuthorDto>> GetAllAsync()
+    public async Task<List<AuthorResponseDto>> GetAllAsync()
     {
         var authorModels = await _authorsRepository.GetAllAsync();
         return authorModels.Select(author => author.ToAuthorDto()).ToList();
     }
 
-    public async Task<AuthorDto?> GetByIdAsync(int id)
+    public async Task<AuthorResponseDto?> GetByIdAsync(int id)
     {
         var authorModel = await _authorsRepository.GetByIdAsync(id);
         if (authorModel is null)
@@ -31,12 +31,12 @@ public class AuthorsService : IAuthorsService
         return authorModel.ToAuthorDto();
     }
 
-    public async Task<AuthorDto> CreateAsync(CreateAuthorDto authorDto)
+    public async Task<AuthorResponseDto> CreateAsync(AuthorCreateRequestDto authorDto)
     {
         var createdAuthorModel = await _authorsRepository.CreateAsync(authorDto.ToAuthorModel());
         return createdAuthorModel.ToAuthorDto();
     }
-    public async Task<AuthorDto?> TryUpdateAsync(int id, UpdateAuthorDto authorDto)
+    public async Task<AuthorResponseDto?> TryUpdateAsync(int id, AuthorUpdateRequestDto authorDto)
     {
         var authorModel = await _authorsRepository.GetByIdAsync(id);
 

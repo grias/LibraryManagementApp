@@ -5,9 +5,9 @@ namespace LibraryManagementApp.Domain.Mappers;
 
 public static class BooksMapper
 {
-    public static BookDto ToBookDto(this Book bookModel)
+    public static BookResponseDto ToBookDto(this Book bookModel)
     {
-        return new BookDto()
+        return new BookResponseDto()
         {
             Id = bookModel.Id,
             Title = bookModel.Title,
@@ -16,7 +16,7 @@ public static class BooksMapper
         };
     }
 
-    public static Book ToBookModel(this CreateBookDto bookDto)
+    public static Book ToBookModel(this BookCreateRequestDto bookDto)
     {
         return new Book()
         {

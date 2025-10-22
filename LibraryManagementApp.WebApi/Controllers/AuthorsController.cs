@@ -36,7 +36,7 @@ public class AuthorsController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<IActionResult> Create([FromBody] CreateAuthorDto author)
+    public async Task<IActionResult> Create([FromBody] AuthorCreateRequestDto author)
     {
         if (!ModelState.IsValid)
         {
@@ -49,7 +49,7 @@ public class AuthorsController : ControllerBase
     }
 
     [HttpPut("{id:int}")]
-    public async Task<IActionResult> Update([FromRoute] int id, [FromBody] UpdateAuthorDto author)
+    public async Task<IActionResult> Update([FromRoute] int id, [FromBody] AuthorUpdateRequestDto author)
     {
         if (!ModelState.IsValid)
         {

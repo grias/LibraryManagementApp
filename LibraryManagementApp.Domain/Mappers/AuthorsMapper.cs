@@ -6,9 +6,9 @@ namespace LibraryManagementApp.Domain.Mappers;
 
 public static class AuthorsMapper
 {
-    public static AuthorDto ToAuthorDto(this Author authorModel)
+    public static AuthorResponseDto ToAuthorDto(this Author authorModel)
     {
-        return new AuthorDto()
+        return new AuthorResponseDto()
         {
             Id = authorModel.Id,
             Name = authorModel.Name,
@@ -16,7 +16,7 @@ public static class AuthorsMapper
         };
     }
 
-    public static Author ToAuthorModel(this CreateAuthorDto authorDto)
+    public static Author ToAuthorModel(this AuthorCreateRequestDto authorDto)
     {
         return new Author()
         {

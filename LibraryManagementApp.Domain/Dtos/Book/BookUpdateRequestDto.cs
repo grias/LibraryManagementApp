@@ -1,6 +1,6 @@
 ﻿namespace LibraryManagementApp.Domain.Dtos.Book;
 
-public class UpdateBookDto
+public class BookUpdateRequestDto
 {
     public string? Title { get; set; }
 

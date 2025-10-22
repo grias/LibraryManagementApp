@@ -2,7 +2,7 @@
 
 namespace LibraryManagementApp.Domain.Dtos.Book;
 
-public class CreateBookDto
+public class BookCreateRequestDto
 {
     [Required]
     public string Title { get; set; } = string.Empty;

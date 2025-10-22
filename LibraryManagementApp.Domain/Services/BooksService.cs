@@ -14,13 +14,13 @@ public class BooksService : IBooksService
         _booksRepository = booksRepository;
     }
 
-    public async Task<List<BookDto>> GetAllAsync()
+    public async Task<List<BookResponseDto>> GetAllAsync()
     {
         var bookModels = await _booksRepository.GetAllAsync();
         return bookModels.Select(book => book.ToBookDto()).ToList();
     }
 
-    public async Task<BookDto?> GetByIdAsync(int id)
+    public async Task<BookResponseDto?> GetByIdAsync(int id)
     {
         var bookModel = await _booksRepository.GetByIdAsync(id);
         if (bookModel is null)
@@ -31,13 +31,13 @@ public class BooksService : IBooksService
         return bookModel.ToBookDto();
     }
 
-    public async Task<BookDto> CreateAsync(CreateBookDto bookDto)
+    public async Task<BookResponseDto> CreateAsync(BookCreateRequestDto bookDto)
     {
         var createdBookModel = await _booksRepository.CreateAsync(bookDto.ToBookModel());
         return createdBookModel.ToBookDto();
     }
 
-    public async Task<BookDto?> TryUpdateAsync(int id, UpdateBookDto bookDto)
+    public async Task<BookResponseDto?> TryUpdateAsync(int id, BookUpdateRequestDto bookDto)
     {
         var bookModel = await _booksRepository.GetByIdAsync(id);
 

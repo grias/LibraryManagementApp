@@ -1,6 +1,6 @@
 ﻿namespace LibraryManagementApp.Domain.Dtos.Book;
 
-public class BookDto
+public class BookResponseDto
 {
     public int Id { get; set; }
 

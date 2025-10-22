@@ -2,7 +2,7 @@
 
 namespace LibraryManagementApp.Domain.Dtos.Author;
 
-public class CreateAuthorDto
+public class AuthorCreateRequestDto
 {
     [Required]
     public string Name { get; set; } = string.Empty;

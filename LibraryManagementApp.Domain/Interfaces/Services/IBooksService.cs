@@ -4,13 +4,13 @@ namespace LibraryManagementApp.Domain.Interfaces.Services;
 
 public interface IBooksService
 {
-    Task<List<BookDto>> GetAllAsync();
+    Task<List<BookResponseDto>> GetAllAsync();
 
-    Task<BookDto?> GetByIdAsync(int id);
+    Task<BookResponseDto?> GetByIdAsync(int id);
 
-    Task<BookDto> CreateAsync(CreateBookDto bookDto);
+    Task<BookResponseDto> CreateAsync(BookCreateRequestDto bookDto);
 
-    Task<BookDto?> TryUpdateAsync(int id, UpdateBookDto bookDto);
+    Task<BookResponseDto?> TryUpdateAsync(int id, BookUpdateRequestDto bookDto);
 
     Task<bool> DeleteAsync(int id);
 }
