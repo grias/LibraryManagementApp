@@ -56,7 +56,7 @@ public class BooksController : ControllerBase
             return BadRequest(ModelState);
         }
 
-        var updatedBook = await _booksService.TryUpdateAsync(id, book);
+        var updatedBook = await _booksService.UpdateAsync(id, book);
 
         if (updatedBook is null)
         {

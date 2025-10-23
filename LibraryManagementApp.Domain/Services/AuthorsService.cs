@@ -2,6 +2,7 @@
 using LibraryManagementApp.Domain.Interfaces.Repositories;
 using LibraryManagementApp.Domain.Interfaces.Services;
 using LibraryManagementApp.Domain.Mappers;
+using LibraryManagementApp.Domain.Exceptions;
 
 namespace LibraryManagementApp.Domain.Services;
 
@@ -20,12 +21,12 @@ public class AuthorsService : IAuthorsService
         return authorModels.ToListOfAuthorResponseDtos();
     }
 
-    public async Task<AuthorResponseDto?> GetByIdAsync(int id)
+    public async Task<AuthorResponseDto> GetByIdAsync(int id)
     {
         var authorModel = await _authorsRepository.GetByIdAsync(id);
         if (authorModel is null)
         {
-            return null;
+            throw new AuthorNotFoundException(id);
         }
 
         return authorModel.ToAuthorDto();
@@ -36,14 +37,9 @@ public class AuthorsService : IAuthorsService
         var createdAuthorModel = await _authorsRepository.CreateAsync(authorDto.ToAuthorModel());
         return createdAuthorModel.ToAuthorDto();
     }
-    public async Task<AuthorResponseDto?> TryUpdateAsync(int id, AuthorUpdateRequestDto authorDto)
+    public async Task<AuthorResponseDto> UpdateAsync(int id, AuthorUpdateRequestDto authorDto)
     {
         var authorModel = await _authorsRepository.GetByIdAsync(id);
-
-        if (authorModel is null)
-        {
-            return null;
-        }
 
         var updatedAuthorModel = await _authorsRepository.UpdateAsync(authorModel);
         return updatedAuthorModel.ToAuthorDto();
@@ -52,11 +48,6 @@ public class AuthorsService : IAuthorsService
     public async Task<bool> DeleteAsync(int id)
     {
         var AuthorModel = await _authorsRepository.GetByIdAsync(id);
-
-        if (AuthorModel is null)
-        {
-            return false;
-        }
 
         await _authorsRepository.DeleteAsync(id);
         return true;

@@ -6,11 +6,11 @@ public interface IBooksService
 {
     Task<List<BookResponseDto>> GetAllAsync();
 
-    Task<BookResponseDto?> GetByIdAsync(int id);
+    Task<BookResponseDto> GetByIdAsync(int id);
 
     Task<BookResponseDto> CreateAsync(BookCreateRequestDto bookDto);
 
-    Task<BookResponseDto?> TryUpdateAsync(int id, BookUpdateRequestDto bookDto);
+    Task<BookResponseDto> UpdateAsync(int id, BookUpdateRequestDto bookDto);
 
     Task<bool> DeleteAsync(int id);
 }

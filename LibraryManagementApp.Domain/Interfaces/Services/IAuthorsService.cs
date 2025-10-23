@@ -6,11 +6,11 @@ public interface IAuthorsService
 {
     Task<List<AuthorResponseDto>> GetAllAsync();
 
-    Task<AuthorResponseDto?> GetByIdAsync(int id);
+    Task<AuthorResponseDto> GetByIdAsync(int id);
 
     Task<AuthorResponseDto> CreateAsync(AuthorCreateRequestDto authorDto);
 
-    Task<AuthorResponseDto?> TryUpdateAsync(int id, AuthorUpdateRequestDto authorDto);
+    Task<AuthorResponseDto> UpdateAsync(int id, AuthorUpdateRequestDto authorDto);
 
     Task<bool> DeleteAsync(int id);
 }

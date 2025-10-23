@@ -56,7 +56,7 @@ public class AuthorsController : ControllerBase
             return BadRequest(ModelState);
         }
 
-        var updatedAuthor = await _authorService.TryUpdateAsync(id, author);
+        var updatedAuthor = await _authorService.UpdateAsync(id, author);
 
         if (updatedAuthor is null)
         {

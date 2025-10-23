@@ -2,6 +2,7 @@
 using LibraryManagementApp.Domain.Interfaces.Repositories;
 using LibraryManagementApp.Domain.Interfaces.Services;
 using LibraryManagementApp.Domain.Mappers;
+using LibraryManagementApp.Domain.Exceptions;
 
 namespace LibraryManagementApp.Domain.Services;
 
@@ -20,12 +21,12 @@ public class BooksService : IBooksService
         return bookModels.ToListOfResponseDtos();
     }
 
-    public async Task<BookResponseDto?> GetByIdAsync(int id)
+    public async Task<BookResponseDto> GetByIdAsync(int id)
     {
         var bookModel = await _booksRepository.GetByIdAsync(id);
         if (bookModel is null)
         {
-            return null;
+            throw new BookNotFoundException(id);
         }
 
         return bookModel.ToBookDto();
@@ -37,14 +38,9 @@ public class BooksService : IBooksService
         return createdBookModel.ToBookDto();
     }
 
-    public async Task<BookResponseDto?> TryUpdateAsync(int id, BookUpdateRequestDto bookDto)
+    public async Task<BookResponseDto> UpdateAsync(int id, BookUpdateRequestDto bookDto)
     {
         var bookModel = await _booksRepository.GetByIdAsync(id);
-
-        if (bookModel is null)
-        {
-            return null;
-        }
 
         bookDto.ToBookModel(id);
 
@@ -55,11 +51,6 @@ public class BooksService : IBooksService
     public async Task<bool> DeleteAsync(int id)
     {
         var bookModel = await _booksRepository.GetByIdAsync(id);
-
-        if (bookModel is null)
-        {
-            return false;
-        }
 
         await _booksRepository.DeleteAsync(id);
         return true;
