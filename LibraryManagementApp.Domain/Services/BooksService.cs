@@ -41,6 +41,10 @@ public class BooksService : IBooksService
     public async Task<BookResponseDto> UpdateAsync(int id, BookUpdateRequestDto bookDto)
     {
         var bookModel = await _booksRepository.GetByIdAsync(id);
+        if (bookModel is null)
+        {
+            throw new BookNotFoundException(id);
+        }
 
         bookDto.ToBookModel(id);
 
@@ -51,6 +55,10 @@ public class BooksService : IBooksService
     public async Task<bool> DeleteAsync(int id)
     {
         var bookModel = await _booksRepository.GetByIdAsync(id);
+        if (bookModel is null)
+        {
+            throw new BookNotFoundException(id);
+        }
 
         await _booksRepository.DeleteAsync(id);
         return true;

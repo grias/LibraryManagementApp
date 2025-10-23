@@ -40,6 +40,10 @@ public class AuthorsService : IAuthorsService
     public async Task<AuthorResponseDto> UpdateAsync(int id, AuthorUpdateRequestDto authorDto)
     {
         var authorModel = await _authorsRepository.GetByIdAsync(id);
+        if (authorModel is null)
+        {
+            throw new AuthorNotFoundException(id);
+        }
 
         var updatedAuthorModel = await _authorsRepository.UpdateAsync(authorModel);
         return updatedAuthorModel.ToAuthorDto();
@@ -47,7 +51,11 @@ public class AuthorsService : IAuthorsService
 
     public async Task<bool> DeleteAsync(int id)
     {
-        var AuthorModel = await _authorsRepository.GetByIdAsync(id);
+        var authorModel = await _authorsRepository.GetByIdAsync(id);
+        if (authorModel is null)
+        {
+            throw new AuthorNotFoundException(id);
+        }
 
         await _authorsRepository.DeleteAsync(id);
         return true;
