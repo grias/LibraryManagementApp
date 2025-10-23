@@ -12,5 +12,5 @@ public interface IAuthorsService
 
     Task<AuthorResponseDto> UpdateAsync(int id, AuthorUpdateRequestDto authorDto);
 
-    Task<bool> DeleteAsync(int id);
+    Task DeleteAsync(int id);
 }

@@ -69,12 +69,7 @@ public class AuthorsController : ControllerBase
     [HttpDelete("{id:int}")]
     public async Task<IActionResult> DeleteById([FromRoute] int id)
     {
-        var found = await _authorService.DeleteAsync(id);
-
-        if (!found)
-        {
-            return NotFound();
-        }
+        await _authorService.DeleteAsync(id);
 
         return NoContent();
     }

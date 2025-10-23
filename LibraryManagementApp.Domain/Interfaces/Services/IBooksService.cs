@@ -12,5 +12,5 @@ public interface IBooksService
 
     Task<BookResponseDto> UpdateAsync(int id, BookUpdateRequestDto bookDto);
 
-    Task<bool> DeleteAsync(int id);
+    Task DeleteAsync(int id);
 }

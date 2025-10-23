@@ -49,7 +49,7 @@ public class AuthorsService : IAuthorsService
         return updatedAuthorModel.ToAuthorDto();
     }
 
-    public async Task<bool> DeleteAsync(int id)
+    public async Task DeleteAsync(int id)
     {
         var authorModel = await _authorsRepository.GetByIdAsync(id);
         if (authorModel is null)
@@ -58,6 +58,5 @@ public class AuthorsService : IAuthorsService
         }
 
         await _authorsRepository.DeleteAsync(id);
-        return true;
     }
 }

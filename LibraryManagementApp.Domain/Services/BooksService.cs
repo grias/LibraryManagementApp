@@ -52,7 +52,7 @@ public class BooksService : IBooksService
         return updatedBookModel.ToBookDto();
     }
 
-    public async Task<bool> DeleteAsync(int id)
+    public async Task DeleteAsync(int id)
     {
         var bookModel = await _booksRepository.GetByIdAsync(id);
         if (bookModel is null)
@@ -61,6 +61,5 @@ public class BooksService : IBooksService
         }
 
         await _booksRepository.DeleteAsync(id);
-        return true;
     }
 }
