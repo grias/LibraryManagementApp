@@ -55,8 +55,8 @@ public class Program
 
     private static void RegisterRepositories(WebApplicationBuilder builder)
     {
-        builder.Services.AddSingleton<IBooksRepository, InMemoryBooksRepository>();
-        builder.Services.AddSingleton<IAuthorsRepository, InMemoryAuthorsRepository>();
+        builder.Services.AddTransient<IBooksRepository, EfBooksRepository>();
+        builder.Services.AddTransient<IAuthorsRepository, EfAuthorsRepository>();
     }
 
     private static void RegisterServices(WebApplicationBuilder builder)
