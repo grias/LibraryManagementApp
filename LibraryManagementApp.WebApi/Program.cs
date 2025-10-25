@@ -25,6 +25,8 @@ public class Program
         builder.Services.AddExceptionHandler<GeneralExceptionHandler>();
         builder.Services.AddProblemDetails();
 
+        builder.Configuration.AddEnvironmentVariables();
+
         RegisterRepositories(builder);
         RegisterServices(builder);
         RegisterDbContext(builder);
