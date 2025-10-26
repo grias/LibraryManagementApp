@@ -1,5 +1,6 @@
 ﻿using LibraryManagementApp.Domain.Dtos.Author;
 using LibraryManagementApp.Domain.Interfaces.Services;
+using LibraryManagementApp.Domain.Helpers;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LibraryManagementApp.WebApi.Controllers;
@@ -16,9 +17,9 @@ public class AuthorsController : ControllerBase
     }
 
     [HttpGet]
-    public async Task<IActionResult> GetAll()
+    public async Task<IActionResult> GetAll([FromQuery] QueryObject queryObject)
     {
-        var authors = await _authorService.GetAllAsync();
+        var authors = await _authorService.GetAllAsync(queryObject);
         return Ok(authors);
     }
 

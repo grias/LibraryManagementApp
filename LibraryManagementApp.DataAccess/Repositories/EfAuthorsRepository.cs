@@ -1,6 +1,7 @@
 ﻿using LibraryManagementApp.DataAccess.Contexts;
 using LibraryManagementApp.Domain.Interfaces.Repositories;
 using LibraryManagementApp.Domain.Entities;
+using LibraryManagementApp.Domain.Helpers;
 using Microsoft.EntityFrameworkCore;
 
 namespace LibraryManagementApp.DataAccess.Repositories;
@@ -14,7 +15,7 @@ public class EfAuthorsRepository : IAuthorsRepository
         _context = context;
     }
 
-    public async Task<List<Author>> GetAllAsync()
+    public async Task<List<Author>> GetAllAsync(QueryObject queryObject)
     {
         var authors = await _context.Authors.Include(x => x.Books).ToListAsync();
         return authors;

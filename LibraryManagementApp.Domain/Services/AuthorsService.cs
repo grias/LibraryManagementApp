@@ -3,6 +3,7 @@ using LibraryManagementApp.Domain.Interfaces.Repositories;
 using LibraryManagementApp.Domain.Interfaces.Services;
 using LibraryManagementApp.Domain.Mappers;
 using LibraryManagementApp.Domain.Exceptions;
+using LibraryManagementApp.Domain.Helpers;
 
 namespace LibraryManagementApp.Domain.Services;
 
@@ -15,9 +16,9 @@ public class AuthorsService : IAuthorsService
         _authorsRepository = authorsRepository;
     }
 
-    public async Task<List<AuthorResponseDto>> GetAllAsync()
+    public async Task<List<AuthorResponseDto>> GetAllAsync(QueryObject queryObject)
     {
-        var authorModels = await _authorsRepository.GetAllAsync();
+        var authorModels = await _authorsRepository.GetAllAsync(queryObject);
         return authorModels.ToListOfAuthorResponseDtos();
     }
 

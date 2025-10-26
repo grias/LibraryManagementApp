@@ -1,4 +1,5 @@
 ﻿using LibraryManagementApp.Domain.Dtos.Book;
+using LibraryManagementApp.Domain.Helpers;
 using LibraryManagementApp.Domain.Interfaces.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -16,9 +17,9 @@ public class BooksController : ControllerBase
     }
 
     [HttpGet]
-    public async Task<IActionResult> GetAll()
+    public async Task<IActionResult> GetAll([FromQuery] QueryObject queryObject)
     {
-        var books = await _booksService.GetAllAsync();
+        var books = await _booksService.GetAllAsync(queryObject);
         return Ok(books);
     }
 

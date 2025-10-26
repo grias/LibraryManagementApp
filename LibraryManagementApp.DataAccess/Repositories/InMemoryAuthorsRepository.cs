@@ -1,5 +1,6 @@
-﻿using LibraryManagementApp.Domain.Interfaces.Repositories;
-using LibraryManagementApp.Domain.Entities;
+﻿using LibraryManagementApp.Domain.Entities;
+using LibraryManagementApp.Domain.Helpers;
+using LibraryManagementApp.Domain.Interfaces.Repositories;
 
 namespace LibraryManagementApp.DataAccess.Repositories;
 
@@ -29,7 +30,7 @@ public class InMemoryAuthorsRepository : IAuthorsRepository
         };
     }
 
-    public async Task<List<Author>> GetAllAsync()
+    public async Task<List<Author>> GetAllAsync(QueryObject queryObject)
     {
         return _authorsSet;
     }

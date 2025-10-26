@@ -1,8 +1,10 @@
-﻿namespace LibraryManagementApp.Domain.Interfaces.Repositories;
+﻿using LibraryManagementApp.Domain.Helpers;
+
+namespace LibraryManagementApp.Domain.Interfaces.Repositories;
 
 public interface IRepository<TEntity> where TEntity : class
 {
-    Task<List<TEntity>> GetAllAsync();
+    Task<List<TEntity>> GetAllAsync(QueryObject queryObject);
 
     Task<TEntity?> GetByIdAsync(int id);
 

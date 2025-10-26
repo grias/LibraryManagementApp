@@ -1,5 +1,6 @@
-﻿using LibraryManagementApp.Domain.Interfaces.Repositories;
-using LibraryManagementApp.Domain.Entities;
+﻿using LibraryManagementApp.Domain.Entities;
+using LibraryManagementApp.Domain.Helpers;
+using LibraryManagementApp.Domain.Interfaces.Repositories;
 
 namespace LibraryManagementApp.DataAccess.Repositories;
 
@@ -30,7 +31,7 @@ public class InMemoryBooksRepository : IBooksRepository
         };
     }
 
-    public async Task<List<Book>> GetAllAsync()
+    public async Task<List<Book>> GetAllAsync(QueryObject queryObject)
     {
         return _booksSet;
     }

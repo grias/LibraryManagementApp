@@ -1,10 +1,11 @@
 ﻿using LibraryManagementApp.Domain.Dtos.Book;
+using LibraryManagementApp.Domain.Helpers;
 
 namespace LibraryManagementApp.Domain.Interfaces.Services;
 
 public interface IBooksService
 {
-    Task<List<BookResponseDto>> GetAllAsync();
+    Task<List<BookResponseDto>> GetAllAsync(QueryObject queryObject);
 
     Task<BookResponseDto> GetByIdAsync(int id);
 

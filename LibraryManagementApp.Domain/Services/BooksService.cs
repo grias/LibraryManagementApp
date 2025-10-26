@@ -1,8 +1,9 @@
 ﻿using LibraryManagementApp.Domain.Dtos.Book;
+using LibraryManagementApp.Domain.Exceptions;
+using LibraryManagementApp.Domain.Helpers;
 using LibraryManagementApp.Domain.Interfaces.Repositories;
 using LibraryManagementApp.Domain.Interfaces.Services;
 using LibraryManagementApp.Domain.Mappers;
-using LibraryManagementApp.Domain.Exceptions;
 
 namespace LibraryManagementApp.Domain.Services;
 
@@ -15,9 +16,9 @@ public class BooksService : IBooksService
         _booksRepository = booksRepository;
     }
 
-    public async Task<List<BookResponseDto>> GetAllAsync()
+    public async Task<List<BookResponseDto>> GetAllAsync(QueryObject queryObject)
     {
-        var bookModels = await _booksRepository.GetAllAsync();
+        var bookModels = await _booksRepository.GetAllAsync(queryObject);
         return bookModels.ToListOfResponseDtos();
     }
 
