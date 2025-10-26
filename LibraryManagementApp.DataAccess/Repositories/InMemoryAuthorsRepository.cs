@@ -32,7 +32,9 @@ public class InMemoryAuthorsRepository : IAuthorsRepository
 
     public async Task<List<Author>> GetAllAsync(QueryObject queryObject)
     {
-        return _authorsSet;
+        var pagesToSkip = (queryObject.PageNumber - 1) * queryObject.PageSize;
+        var authors = _authorsSet.Skip(pagesToSkip).Take(queryObject.PageSize).ToList();
+        return authors;
     }
 
     public async Task<Author?> GetByIdAsync(int id)

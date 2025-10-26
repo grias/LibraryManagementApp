@@ -33,7 +33,9 @@ public class InMemoryBooksRepository : IBooksRepository
 
     public async Task<List<Book>> GetAllAsync(QueryObject queryObject)
     {
-        return _booksSet;
+        var pagesToSkip = (queryObject.PageNumber - 1) * queryObject.PageSize;
+        var books = _booksSet.Skip(pagesToSkip).Take(queryObject.PageSize).ToList();
+        return books;
     }
 
     public async Task<Book?> GetByIdAsync(int id)
