@@ -17,9 +17,15 @@ public class EfBooksRepository : IBooksRepository
 
     public async Task<List<Book>> GetAllAsync(QueryObject queryObject)
     {
+        var books = _context.Books.Include(x => x.Author).AsQueryable();
+
+        if (!string.IsNullOrWhiteSpace(queryObject.BookTitle))
+        {
+            books = books.Where(book => book.Title.Contains(queryObject.BookTitle));
+        }
+
         var pagesToSkip = (queryObject.PageNumber - 1) * queryObject.PageSize;
-        var books = await _context.Books.Include(x => x.Author).Skip(pagesToSkip).Take(queryObject.PageSize).ToListAsync();
-        return books;
+        return await books.Include(x => x.Author).Skip(pagesToSkip).Take(queryObject.PageSize).ToListAsync();
     }
 
     public async Task<Book?> GetByIdAsync(int id)
