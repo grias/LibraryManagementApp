@@ -16,12 +16,21 @@ public class EfBooksRepository : IBooksRepository
 
     public async Task<List<Book>> GetAllAsync()
     {
-        return await _context.Books.ToListAsync();
+        var books = await _context.Books.Include(x => x.Author).ToListAsync();
+        return books;
     }
 
     public async Task<Book?> GetByIdAsync(int id)
     {
-        return await _context.Books.FindAsync(id);
+        var book = await _context.Books.FindAsync(id);
+        if (book is null)
+        {
+            return null;
+        }
+
+        await _context.Authors.FindAsync(book.AuthorId);
+
+        return book;
     }
 
     public async Task<Book> CreateAsync(Book entity)

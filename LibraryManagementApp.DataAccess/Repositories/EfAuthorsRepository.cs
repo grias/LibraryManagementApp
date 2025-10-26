@@ -16,12 +16,21 @@ public class EfAuthorsRepository : IAuthorsRepository
 
     public async Task<List<Author>> GetAllAsync()
     {
-        return await _context.Authors.ToListAsync();
+        var authors = await _context.Authors.Include(x => x.Books).ToListAsync();
+        return authors;
     }
 
     public async Task<Author?> GetByIdAsync(int id)
     {
-        return await _context.Authors.FindAsync(id);
+        var author = await _context.Authors.FindAsync(id);
+        if (author is null)
+        {
+            return null;
+        }
+
+        await _context.Books.Where(book => book.AuthorId == author.Id).ToListAsync();
+
+        return author;
     }
 
     public async Task<Author> CreateAsync(Author entity)
