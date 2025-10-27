@@ -49,7 +49,7 @@ public class BooksService : IBooksService
 
         bookDto.ToBookModel(id);
 
-        var updatedBookModel = await _booksRepository.UpdateAsync(bookModel);
+        var updatedBookModel = await _booksRepository.UpdateAsync(bookDto.ToBookModel(id));
         return updatedBookModel.ToBookDto();
     }
 

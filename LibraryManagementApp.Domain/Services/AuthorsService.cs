@@ -46,7 +46,7 @@ public class AuthorsService : IAuthorsService
             throw new AuthorNotFoundException(id);
         }
 
-        var updatedAuthorModel = await _authorsRepository.UpdateAsync(authorModel);
+        var updatedAuthorModel = await _authorsRepository.UpdateAsync(authorDto.ToAuthorModel(id));
         return updatedAuthorModel.ToAuthorDto();
     }
 
