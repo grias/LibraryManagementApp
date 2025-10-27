@@ -40,8 +40,7 @@ public class InMemoryBooksRepository : IBooksRepository
             books = books.Where(book => book.Title.Contains(queryObject.BookTitle));
         }
 
-        var pagesToSkip = (queryObject.PageNumber - 1) * queryObject.PageSize;
-        return books.Skip(pagesToSkip).Take(queryObject.PageSize).ToList();
+        return books.Paginate(queryObject).ToList();
     }
 
     public async Task<Book?> GetByIdAsync(int id)

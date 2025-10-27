@@ -39,8 +39,7 @@ public class InMemoryAuthorsRepository : IAuthorsRepository
             authors = authors.Where(author => author.Name.Contains(queryObject.AuthorName));
         }
 
-        var pagesToSkip = (queryObject.PageNumber - 1) * queryObject.PageSize;
-        return authors.Skip(pagesToSkip).Take(queryObject.PageSize).ToList();
+        return authors.Paginate(queryObject).ToList();
     }
 
     public async Task<Author?> GetByIdAsync(int id)

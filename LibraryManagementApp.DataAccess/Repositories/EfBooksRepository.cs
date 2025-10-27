@@ -24,8 +24,7 @@ public class EfBooksRepository : IBooksRepository
             books = books.Where(book => book.Title.Contains(queryObject.BookTitle));
         }
 
-        var pagesToSkip = (queryObject.PageNumber - 1) * queryObject.PageSize;
-        return await books.Include(x => x.Author).Skip(pagesToSkip).Take(queryObject.PageSize).ToListAsync();
+        return await books.Include(x => x.Author).Paginate(queryObject).ToListAsync();
     }
 
     public async Task<Book?> GetByIdAsync(int id)

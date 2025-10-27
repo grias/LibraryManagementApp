@@ -24,8 +24,7 @@ public class EfAuthorsRepository : IAuthorsRepository
             authors = authors.Where(author => author.Name.Contains(queryObject.AuthorName));
         }
 
-        var pagesToSkip = (queryObject.PageNumber - 1) * queryObject.PageSize;
-        return await authors.Skip(pagesToSkip).Take(queryObject.PageSize).ToListAsync();
+        return await authors.Paginate(queryObject).ToListAsync();
     }
 
     public async Task<Author?> GetByIdAsync(int id)
