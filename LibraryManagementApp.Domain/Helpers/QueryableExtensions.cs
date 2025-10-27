@@ -1,6 +1,6 @@
 ﻿namespace LibraryManagementApp.Domain.Helpers;
 
-public static class PaginationExtensions
+public static class QueryableExtensions
 {
     public static IQueryable<TEntity> Paginate<TEntity>(this IQueryable<TEntity> entities, QueryObject queryObject)
     {
