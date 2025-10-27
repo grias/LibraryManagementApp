@@ -35,7 +35,7 @@ public class InMemoryBooksRepository : IBooksRepository
     {
         var books = _booksSet.AsQueryable();
 
-        return books.FilterByBookTitle(queryObject).Paginate(queryObject).ToList();
+        return books.FilterByTitle(queryObject).Paginate(queryObject).ToList();
     }
 
     public async Task<Book?> GetByIdAsync(int id)

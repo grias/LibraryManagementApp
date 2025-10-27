@@ -19,7 +19,7 @@ public class EfAuthorsRepository : IAuthorsRepository
     {
         var authors = _context.Authors.Include(x => x.Books).AsQueryable();
 
-        return await authors.FilterByAuthorName(queryObject).Paginate(queryObject).ToListAsync();
+        return await authors.FilterByName(queryObject).Paginate(queryObject).ToListAsync();
     }
 
     public async Task<Author?> GetByIdAsync(int id)

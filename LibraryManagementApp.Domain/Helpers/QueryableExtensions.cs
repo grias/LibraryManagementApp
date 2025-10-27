@@ -11,7 +11,7 @@ public static class QueryableExtensions
         return entities;
     }
 
-    public static IQueryable<TEntity> FilterByAuthorName<TEntity>(this IQueryable<TEntity> authors, QueryObject queryObject) where TEntity : Author
+    public static IQueryable<TEntity> FilterByName<TEntity>(this IQueryable<TEntity> authors, QueryObject queryObject) where TEntity : Author
     {
 
         if (!string.IsNullOrWhiteSpace(queryObject.AuthorName))
@@ -22,7 +22,7 @@ public static class QueryableExtensions
         return authors;
     }
 
-    public static IQueryable<TEntity> FilterByBookTitle<TEntity>(this IQueryable<TEntity> books, QueryObject queryObject) where TEntity : Book
+    public static IQueryable<TEntity> FilterByTitle<TEntity>(this IQueryable<TEntity> books, QueryObject queryObject) where TEntity : Book
     {
 
         if (!string.IsNullOrWhiteSpace(queryObject.BookTitle))
