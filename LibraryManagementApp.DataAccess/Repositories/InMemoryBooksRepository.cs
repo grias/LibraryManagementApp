@@ -35,7 +35,11 @@ public class InMemoryBooksRepository : IBooksRepository
     {
         var books = _booksSet.AsQueryable();
 
-        return books.FilterByTitle(queryObject).FilterByAuthorName(queryObject).Paginate(queryObject).ToList();
+        return books
+            .FilterByPublishingDateRange(queryObject)
+            .FilterByTitle(queryObject)
+            .FilterByAuthorName(queryObject)
+            .Paginate(queryObject).ToList();
     }
 
     public async Task<Book?> GetByIdAsync(int id)

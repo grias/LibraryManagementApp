@@ -19,7 +19,11 @@ public class EfBooksRepository : IBooksRepository
     {
         var books = _context.Books.Include(x => x.Author).AsQueryable();
 
-        return await books.FilterByTitle(queryObject).FilterByAuthorName(queryObject).Paginate(queryObject).ToListAsync();
+        return await books
+            .FilterByPublishingDateRange(queryObject)
+            .FilterByTitle(queryObject)
+            .FilterByAuthorName(queryObject)
+            .Paginate(queryObject).ToListAsync();
     }
 
     public async Task<Book?> GetByIdAsync(int id)

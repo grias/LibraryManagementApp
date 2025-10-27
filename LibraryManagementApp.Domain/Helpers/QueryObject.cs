@@ -16,4 +16,10 @@ public class QueryObject
     public string? AuthorName { get; set; }
 
     public string? BookTitle { get; set; }
+
+    [DataType(DataType.Date)]
+    public DateOnly? Before { get; set; }
+
+    [DataType(DataType.Date)]
+    public DateOnly? After { get; set; }
 }
