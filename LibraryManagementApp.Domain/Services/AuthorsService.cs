@@ -4,6 +4,7 @@ using LibraryManagementApp.Domain.Interfaces.Services;
 using LibraryManagementApp.Domain.Helpers.Mappers;
 using LibraryManagementApp.Domain.Exceptions;
 using LibraryManagementApp.Domain.Helpers;
+using LibraryManagementApp.Domain.Dtos.Book;
 
 namespace LibraryManagementApp.Domain.Services;
 
@@ -31,6 +32,19 @@ public class AuthorsService : IAuthorsService
         }
 
         return authorModel.ToAuthorDto();
+    }
+
+    public async Task<List<BookResponseDto>> GetBooksByAuthorIdAsync(int id, QueryObject queryObject)
+    {
+        var authorModel = await _authorsRepository.GetByIdAsync(id);
+        if (authorModel is null)
+        {
+            throw new AuthorNotFoundException(id);
+        }
+
+        var books = authorModel.Books.AsQueryable().Paginate(queryObject).ToList();
+
+        return books.ToListOfResponseDtos();
     }
 
     public async Task<AuthorResponseDto> CreateAsync(AuthorCreateRequestDto authorDto)

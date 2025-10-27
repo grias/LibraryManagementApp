@@ -36,6 +36,13 @@ public class AuthorsController : ControllerBase
         return Ok(author);
     }
 
+    [HttpGet("{id:int}/Books")]
+    public async Task<IActionResult> GetBooksByAuthorId([FromRoute] int id, [FromQuery] QueryObject queryObject)
+    {
+        var books = await _authorService.GetBooksByAuthorIdAsync(id, queryObject);
+        return Ok(books);
+    }
+
     [HttpPost]
     public async Task<IActionResult> Create([FromBody] AuthorCreateRequestDto author)
     {
