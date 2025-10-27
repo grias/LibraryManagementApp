@@ -19,6 +19,11 @@ public class BooksController : ControllerBase
     [HttpGet]
     public async Task<IActionResult> GetAll([FromQuery] QueryObject queryObject)
     {
+        if (!ModelState.IsValid)
+        {
+            return BadRequest(ModelState);
+        }
+
         var books = await _booksService.GetAllAsync(queryObject);
         return Ok(books);
     }

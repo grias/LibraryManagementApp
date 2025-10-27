@@ -19,6 +19,11 @@ public class AuthorsController : ControllerBase
     [HttpGet]
     public async Task<IActionResult> GetAll([FromQuery] QueryObject queryObject)
     {
+        if (!ModelState.IsValid)
+        {
+            return BadRequest(ModelState);
+        }
+
         var authors = await _authorService.GetAllAsync(queryObject);
         return Ok(authors);
     }
@@ -39,6 +44,11 @@ public class AuthorsController : ControllerBase
     [HttpGet("{id:int}/Books")]
     public async Task<IActionResult> GetBooksByAuthorId([FromRoute] int id, [FromQuery] QueryObject queryObject)
     {
+        if (!ModelState.IsValid)
+        {
+            return BadRequest(ModelState);
+        }
+
         var books = await _authorService.GetBooksByAuthorIdAsync(id, queryObject);
         return Ok(books);
     }
