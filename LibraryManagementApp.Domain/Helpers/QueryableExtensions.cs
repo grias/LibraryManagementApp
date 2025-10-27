@@ -67,4 +67,25 @@ public static class QueryableExtensions
 
         return books;
     }
+
+    public static IQueryable<TEntity> FilterByDateOfBirthRange<TEntity>(this IQueryable<TEntity> authors, QueryObject queryObject) where TEntity : Author
+    {
+
+        if (queryObject.After != null || queryObject.Before != null)
+        {
+            authors = authors.Where(authors => authors.DateOfBirth != null);
+        }
+
+        if (queryObject.After != null)
+        {
+            authors = authors.Where(authors => authors.DateOfBirth! > queryObject.After!);
+        }
+
+        if (queryObject.Before != null)
+        {
+            authors = authors.Where(authors => authors.DateOfBirth! < queryObject.Before!);
+        }
+
+        return authors;
+    }
 }

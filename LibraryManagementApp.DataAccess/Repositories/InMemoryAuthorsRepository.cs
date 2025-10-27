@@ -34,7 +34,10 @@ public class InMemoryAuthorsRepository : IAuthorsRepository
     {
         var authors = _authorsSet.AsQueryable();
 
-        return authors.FilterByName(queryObject).Paginate(queryObject).ToList();
+        return authors
+            .FilterByDateOfBirthRange(queryObject)
+            .FilterByName(queryObject)
+            .Paginate(queryObject).ToList();
     }
 
     public async Task<Author?> GetByIdAsync(int id)
