@@ -1,4 +1,6 @@
-﻿namespace LibraryManagementApp.Domain.Helpers;
+﻿using LibraryManagementApp.Domain.Entities;
+
+namespace LibraryManagementApp.Domain.Helpers;
 
 public static class QueryableExtensions
 {
@@ -7,5 +9,27 @@ public static class QueryableExtensions
         var pagesToSkip = (queryObject.PageNumber - 1) * queryObject.PageSize;
         entities = entities.Skip(pagesToSkip).Take(queryObject.PageSize);
         return entities;
+    }
+
+    public static IQueryable<TEntity> FilterByAuthorName<TEntity>(this IQueryable<TEntity> authors, QueryObject queryObject) where TEntity : Author
+    {
+
+        if (!string.IsNullOrWhiteSpace(queryObject.AuthorName))
+        {
+            authors = authors.Where(author => author.Name.Contains(queryObject.AuthorName));
+        }
+
+        return authors;
+    }
+
+    public static IQueryable<TEntity> FilterByBookTitle<TEntity>(this IQueryable<TEntity> books, QueryObject queryObject) where TEntity : Book
+    {
+
+        if (!string.IsNullOrWhiteSpace(queryObject.BookTitle))
+        {
+            books = books.Where(book => book.Title.Contains(queryObject.BookTitle));
+        }
+
+        return books;
     }
 }

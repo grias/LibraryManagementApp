@@ -35,12 +35,7 @@ public class InMemoryBooksRepository : IBooksRepository
     {
         var books = _booksSet.AsQueryable();
 
-        if (!string.IsNullOrWhiteSpace(queryObject.BookTitle))
-        {
-            books = books.Where(book => book.Title.Contains(queryObject.BookTitle));
-        }
-
-        return books.Paginate(queryObject).ToList();
+        return books.FilterByBookTitle(queryObject).Paginate(queryObject).ToList();
     }
 
     public async Task<Book?> GetByIdAsync(int id)

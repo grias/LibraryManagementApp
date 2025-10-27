@@ -34,12 +34,7 @@ public class InMemoryAuthorsRepository : IAuthorsRepository
     {
         var authors = _authorsSet.AsQueryable();
 
-        if (!string.IsNullOrWhiteSpace(queryObject.AuthorName))
-        {
-            authors = authors.Where(author => author.Name.Contains(queryObject.AuthorName));
-        }
-
-        return authors.Paginate(queryObject).ToList();
+        return authors.FilterByAuthorName(queryObject).Paginate(queryObject).ToList();
     }
 
     public async Task<Author?> GetByIdAsync(int id)
