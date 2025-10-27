@@ -32,4 +32,16 @@ public static class QueryableExtensions
 
         return books;
     }
+
+    public static IQueryable<TEntity> FilterByAuthorName<TEntity>(this IQueryable<TEntity> books, QueryObject queryObject) where TEntity : Book
+    {
+
+        if (!string.IsNullOrWhiteSpace(queryObject.AuthorName))
+        {
+            books = books.Where(book => book.Author != null);
+            books = books.Where(book => book.Author!.Name.Contains(queryObject.AuthorName));
+        }
+
+        return books;
+    }
 }

@@ -42,7 +42,7 @@ public class AuthorsService : IAuthorsService
             throw new AuthorNotFoundException(id);
         }
 
-        var books = authorModel.Books.AsQueryable().Paginate(queryObject).ToList();
+        var books = authorModel.Books.AsQueryable().FilterByTitle(queryObject).Paginate(queryObject).ToList();
 
         return books.ToListOfResponseDtos();
     }
