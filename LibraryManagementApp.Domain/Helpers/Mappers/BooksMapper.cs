@@ -22,7 +22,7 @@ public static class BooksMapper
         {
             Title = bookDto.Title,
             PublishedYear = bookDto.PublishedYear,
-            AuthorId = bookDto.AuthorId
+            AuthorId = bookDto is null || bookDto.AuthorId == 0 ? null : bookDto.AuthorId
         };
     }
 
@@ -33,7 +33,7 @@ public static class BooksMapper
             Id = id,
             Title = bookDto.Title,
             PublishedYear = bookDto.PublishedYear,
-            AuthorId = bookDto.AuthorId
+            AuthorId = bookDto is null || bookDto.AuthorId == 0 ? null : bookDto.AuthorId
         };
     }
 
