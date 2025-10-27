@@ -3,7 +3,7 @@ using LibraryManagementApp.Domain.Exceptions;
 using LibraryManagementApp.Domain.Helpers;
 using LibraryManagementApp.Domain.Interfaces.Repositories;
 using LibraryManagementApp.Domain.Interfaces.Services;
-using LibraryManagementApp.Domain.Mappers;
+using LibraryManagementApp.Domain.Helpers.Mappers;
 
 namespace LibraryManagementApp.Domain.Services;
 

@@ -1,7 +1,7 @@
 ﻿using LibraryManagementApp.Domain.Dtos.Book;
 using LibraryManagementApp.Domain.Entities;
 
-namespace LibraryManagementApp.Domain.Mappers;
+namespace LibraryManagementApp.Domain.Helpers.Mappers;
 
 public static class BooksMapper
 {
