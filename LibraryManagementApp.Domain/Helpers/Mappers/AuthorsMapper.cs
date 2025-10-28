@@ -13,6 +13,7 @@ public static class AuthorsMapper
             Id = authorModel.Id,
             Name = authorModel.Name,
             DateOfBirth = authorModel.DateOfBirth,
+            BooksCount = authorModel.Books.Count
         };
     }
 
