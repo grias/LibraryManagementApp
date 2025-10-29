@@ -1,14 +1,14 @@
-using LibraryManagementApp.DataAccess.Contexts;
-using LibraryManagementApp.DataAccess.Repositories;
+using LibraryManagementApp.Infrastructure.Contexts;
+using LibraryManagementApp.Infrastructure.Repositories;
 using LibraryManagementApp.Domain.Interfaces.Repositories;
 using LibraryManagementApp.Domain.Interfaces.Services;
 using LibraryManagementApp.Domain.Services;
-using LibraryManagementApp.WebApi.ExceptionHandlers;
+using LibraryManagementApp.Api.ExceptionHandlers;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Diagnostics;
 
-namespace LibraryManagementApp.WebApi;
+namespace LibraryManagementApp.Api;
 
 public class Program
 {

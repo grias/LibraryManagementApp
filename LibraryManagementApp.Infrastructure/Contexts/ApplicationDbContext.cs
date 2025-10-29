@@ -1,7 +1,7 @@
 ﻿using LibraryManagementApp.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace LibraryManagementApp.DataAccess.Contexts;
+namespace LibraryManagementApp.Infrastructure.Contexts;
 
 public class ApplicationDbContext : DbContext
 {

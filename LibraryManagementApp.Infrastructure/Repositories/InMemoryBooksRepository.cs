@@ -2,7 +2,7 @@
 using LibraryManagementApp.Domain.Helpers;
 using LibraryManagementApp.Domain.Interfaces.Repositories;
 
-namespace LibraryManagementApp.DataAccess.Repositories;
+namespace LibraryManagementApp.Infrastructure.Repositories;
 
 public class InMemoryBooksRepository : IBooksRepository
 {

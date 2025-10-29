@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
 
-namespace LibraryManagementApp.DataAccess.Migrations
+namespace LibraryManagementApp.Infrastructure.Migrations
 {
     /// <inheritdoc />
     public partial class InitialSeedData : Migration

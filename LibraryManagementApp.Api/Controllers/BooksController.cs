@@ -3,7 +3,7 @@ using LibraryManagementApp.Domain.Helpers;
 using LibraryManagementApp.Domain.Interfaces.Services;
 using Microsoft.AspNetCore.Mvc;
 
-namespace LibraryManagementApp.WebApi.Controllers;
+namespace LibraryManagementApp.Api.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]

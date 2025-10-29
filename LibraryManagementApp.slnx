@@ -1,5 +1,6 @@
 <Solution>
-  <Project Path="LibraryManagementApp.DataAccess/LibraryManagementApp.DataAccess.csproj" />
+  <Project Path="LibraryManagementApp.Infrastructure/LibraryManagementApp.Infrastructure.csproj" />
+  <Project Path="LibraryManagementApp.Application/LibraryManagementApp.Application.csproj" Id="3173bd43-5570-40fa-8f49-8d8d2900dd11" />
   <Project Path="LibraryManagementApp.Domain/LibraryManagementApp.Domain.csproj" />
-  <Project Path="LibraryManagementApp.WebApi/LibraryManagementApp.WebApi.csproj" />
+  <Project Path="LibraryManagementApp.Api/LibraryManagementApp.Api.csproj" />
 </Solution>

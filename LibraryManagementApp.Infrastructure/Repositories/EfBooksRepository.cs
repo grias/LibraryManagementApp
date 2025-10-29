@@ -1,10 +1,10 @@
-﻿using LibraryManagementApp.DataAccess.Contexts;
+﻿using LibraryManagementApp.Infrastructure.Contexts;
 using LibraryManagementApp.Domain.Entities;
 using LibraryManagementApp.Domain.Helpers;
 using LibraryManagementApp.Domain.Interfaces.Repositories;
 using Microsoft.EntityFrameworkCore;
 
-namespace LibraryManagementApp.DataAccess.Repositories;
+namespace LibraryManagementApp.Infrastructure.Repositories;
 
 public class EfBooksRepository : IBooksRepository
 {

@@ -2,7 +2,7 @@
 using LibraryManagementApp.Domain.Exceptions;
 using Microsoft.AspNetCore.Mvc;
 
-namespace LibraryManagementApp.WebApi.ExceptionHandlers;
+namespace LibraryManagementApp.Api.ExceptionHandlers;
 
 public class GeneralExceptionHandler : IExceptionHandler
 {
