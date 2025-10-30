@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace LibraryManagementApp.Domain.Dtos.Author;
+namespace LibraryManagementApp.Application.Dtos.Author;
 
-public class AuthorCreateRequestDto
+public class AuthorUpdateRequestDto
 {
     [Required]
     public string Name { get; set; } = string.Empty;

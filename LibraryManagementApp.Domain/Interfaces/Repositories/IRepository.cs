@@ -1,4 +1,4 @@
-﻿using LibraryManagementApp.Domain.Helpers;
+﻿using LibraryManagementApp.Domain.Queries;
 
 namespace LibraryManagementApp.Domain.Interfaces.Repositories;
 

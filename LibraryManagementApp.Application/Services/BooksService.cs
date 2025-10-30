@@ -1,9 +1,9 @@
-﻿using LibraryManagementApp.Domain.Dtos.Book;
+﻿using LibraryManagementApp.Application.Dtos.Book;
 using LibraryManagementApp.Domain.Exceptions;
-using LibraryManagementApp.Domain.Helpers;
+using LibraryManagementApp.Domain.Queries;
 using LibraryManagementApp.Domain.Interfaces.Repositories;
-using LibraryManagementApp.Domain.Interfaces.Services;
-using LibraryManagementApp.Domain.Helpers.Mappers;
+using LibraryManagementApp.Application.Interfaces.Services;
+using LibraryManagementApp.Application.Mappers;
 
 namespace LibraryManagementApp.Domain.Services;
 

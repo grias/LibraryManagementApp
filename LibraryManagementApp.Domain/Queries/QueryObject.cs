@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace LibraryManagementApp.Domain.Helpers;
+namespace LibraryManagementApp.Domain.Queries;
 
 public class QueryObject
 {

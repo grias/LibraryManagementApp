@@ -1,6 +1,7 @@
 ﻿using LibraryManagementApp.Domain.Entities;
-using LibraryManagementApp.Domain.Helpers;
+using LibraryManagementApp.Domain.Queries;
 using LibraryManagementApp.Domain.Interfaces.Repositories;
+using LibraryManagementApp.Application.Helpers;
 
 namespace LibraryManagementApp.Infrastructure.Repositories;
 

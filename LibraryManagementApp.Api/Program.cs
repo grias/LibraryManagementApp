@@ -1,7 +1,7 @@
 using LibraryManagementApp.Infrastructure.Contexts;
 using LibraryManagementApp.Infrastructure.Repositories;
 using LibraryManagementApp.Domain.Interfaces.Repositories;
-using LibraryManagementApp.Domain.Interfaces.Services;
+using LibraryManagementApp.Application.Interfaces.Services;
 using LibraryManagementApp.Domain.Services;
 using LibraryManagementApp.Api.ExceptionHandlers;
 using Microsoft.AspNetCore.Builder;

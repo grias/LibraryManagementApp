@@ -1,8 +1,8 @@
-﻿using LibraryManagementApp.Domain.Dtos.Author;
-using LibraryManagementApp.Domain.Dtos.Book;
-using LibraryManagementApp.Domain.Helpers;
+﻿using LibraryManagementApp.Application.Dtos.Author;
+using LibraryManagementApp.Application.Dtos.Book;
+using LibraryManagementApp.Domain.Queries;
 
-namespace LibraryManagementApp.Domain.Interfaces.Services;
+namespace LibraryManagementApp.Application.Interfaces.Services;
 
 public interface IAuthorsService
 {

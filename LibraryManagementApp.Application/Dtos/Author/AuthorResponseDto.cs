@@ -1,4 +1,4 @@
-﻿namespace LibraryManagementApp.Domain.Dtos.Author;
+﻿namespace LibraryManagementApp.Application.Dtos.Author;
 
 public class AuthorResponseDto
 {

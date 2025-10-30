@@ -1,6 +1,6 @@
-﻿using LibraryManagementApp.Domain.Dtos.Book;
-using LibraryManagementApp.Domain.Helpers;
-using LibraryManagementApp.Domain.Interfaces.Services;
+﻿using LibraryManagementApp.Application.Dtos.Book;
+using LibraryManagementApp.Domain.Queries;
+using LibraryManagementApp.Application.Interfaces.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LibraryManagementApp.Api.Controllers;
